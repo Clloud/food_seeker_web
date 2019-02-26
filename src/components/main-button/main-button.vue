@@ -1,18 +1,17 @@
 <template>
-  <div class="main-button">
-    {{ text }}
+  <div class="main-button" @click="onClick">
+    <slot>确定</slot>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 export default {
-  props: {
-    text: {
-      type: String,
-      default: '确定'
+  name: 'MainButton',
+  methods: {
+    onClick () {
+      this.$emit('confirm')
     }
-  },
-  name: 'MainButton'
+  }
 }
 </script>
 
@@ -22,7 +21,11 @@ export default {
 .main-button
   background: $color-theme
   color: #fff
-  font-size: $font-size-medium
+  font-size: $font-size-medium-x
+  height: 50px
+  width: 85%
+  max-width: 318.75px
+  border-radius: 3.5px
   display: flex
   justify-content: center
   align-items: center

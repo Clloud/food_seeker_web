@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Register from 'views/register/register'
+import Register from 'pages/register/register'
 
 Vue.use(Router)
 
