@@ -23,6 +23,7 @@ export default {
   flex-direction: column
   align-items: flex-start
   width: 85%
+  max-width: 318.75px
   .title
     line-height: 42px
     font-size: $font-size-title

@@ -35,13 +35,14 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 @import '~common/style/variable.styl'
+
 .container
   display: flex
   flex-direction: column
   width: 85%
   max-width: 318.75px
   margin-bottom: 27px
-  .tag
+  .label
     font-size: $font-size-medium
   .input
     font-size: $font-size-large

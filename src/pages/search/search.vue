@@ -1,13 +1,10 @@
 <template>
-  <div id="app">
-    <router-view />
-    <router-view name="tab-bar" />
-  </div>
+  <div>search</div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
 export default {
-  name: 'App'
+  name: 'Search'
 }
 </script>
 
