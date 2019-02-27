@@ -2,7 +2,7 @@
   <div class="page">
     <register-header :title="title" :description="description" class="header">
     </register-header>
-    <register-input label="用户名" v-model="username"></register-input>
+    <register-input label="昵称" v-model="nickname"></register-input>
     <register-input type="password" label="密码" v-model="password"></register-input>
     <main-button @confirm="onConfirm">完成注册</main-button>
   </div>
@@ -24,7 +24,7 @@ export default {
     return {
       title: '完善资料',
       description: '补全信息后，即可创建开饭账号',
-      username: '',
+      nickname: '',
       password: ''
     }
   },

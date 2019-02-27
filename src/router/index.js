@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TabBar from 'components/tab-bar/tab-bar'
+import NavBar from 'components/nav-bar/nav-bar'
 
 import My from 'pages/my/my'
 import Search from 'pages/search/search'
@@ -32,7 +33,8 @@ export default new Router({
       path: '/register',
       components: {
         'default': Register,
-        'tab-bar': TabBar
+        'tab-bar': TabBar,
+        'nav-bar': NavBar
       }
     }
   ]
