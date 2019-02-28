@@ -5,10 +5,12 @@ import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
 import store from './store'
+import axios from 'common/js/http'
 import 'common/style/index.styl'
 
 Vue.config.productionTip = false
 fastclick.attach(document.body)
+Vue.prototype.axios = axios
 
 /* eslint-disable no-new */
 new Vue({

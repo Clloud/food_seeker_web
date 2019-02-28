@@ -1,14 +1,19 @@
 <template>
   <div class="page">
-    <register-header :title="title" :description="description" class="header">
+    <register-header :title="title" class="header">
     </register-header>
-    <register-input label="昵称" v-model="nickname"></register-input>
-    <register-input type="password" label="密码" v-model="password"></register-input>
-    <main-button @confirm="onConfirm">完成注册</main-button>
+    <register-input
+      label="邮箱"
+      v-model="email"
+      :value="email"
+      :error="emailError">
+    </register-input>
+    <main-button @confirm="onConfirm">下一步</main-button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import * as types from 'store/mutation-types'
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
@@ -22,16 +27,33 @@ export default {
   },
   data () {
     return {
-      title: '完善资料',
-      description: '补全信息后，即可创建开饭账号',
-      nickname: '',
-      password: ''
+      title: '注册开饭',
+      email: '',
+      emailError: false
     }
   },
   methods: {
     onConfirm () {
-      console.log(this.username)
+      this.axios.get('/user/2')
+        .then(function (response) {
+          console.log('response')
+          console.log(this.$store.state.token)
+          console.log(response)
+        })
+      if (this.checkEmail()) {
+        this.$store.commit(types.SET_EMAIL, this.email)
+        this.$router.push('/register/confirm')
+      } else {
+        this.emailError = true
+      }
+    },
+    checkEmail () {
+      var reg = /^([a-zA-Z]|[0-9])(\w|-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
+      return reg.test(this.email)
     }
+  },
+  mounted () {
+    this.email = this.$store.state.email
   }
 }
 </script>

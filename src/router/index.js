@@ -6,6 +6,8 @@ import NavBar from 'components/nav-bar/nav-bar'
 import My from 'pages/my/my'
 import Search from 'pages/search/search'
 import Register from 'pages/register/register'
+import RegisterConfirm from 'pages/register/register-confirm'
+import Login from 'pages/login/login'
 
 Vue.use(Router)
 
@@ -13,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/search'
+      redirect: '/register'
     },
     {
       path: '/my',
@@ -33,7 +35,20 @@ export default new Router({
       path: '/register',
       components: {
         'default': Register,
-        'tab-bar': TabBar,
+        'nav-bar': NavBar
+      }
+    },
+    {
+      path: '/register/confirm',
+      components: {
+        'default': RegisterConfirm,
+        'nav-bar': NavBar
+      }
+    },
+    {
+      path: '/login',
+      components: {
+        'default': Login,
         'nav-bar': NavBar
       }
     }

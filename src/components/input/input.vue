@@ -3,7 +3,8 @@
     <div class="label">{{ label }}</div>
     <input :type="type"
       class="input"
-      :class="{'alert': isError}"
+      :class="{'alert': error}"
+      :value="value"
       @input="updateValue">
   </div>
 </template>
@@ -20,9 +21,13 @@ export default {
       type: String,
       default: ''
     },
-    isError: {
+    error: {
       type: Boolean,
       default: false
+    },
+    value: {
+      type: String,
+      default: ''
     }
   },
   methods: {

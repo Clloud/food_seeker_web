@@ -2,16 +2,19 @@
   <div class="page">
     <my-header :title="title" :description="description" class="header">
     </my-header>
+    <log-out></log-out>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import MyHeader from 'components/header/header'
+import LogOut from './components/log-out'
 
 export default {
   name: 'My',
   components: {
-    MyHeader
+    MyHeader,
+    LogOut
   },
   data () {
     return {
