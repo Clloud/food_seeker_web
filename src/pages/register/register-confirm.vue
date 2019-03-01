@@ -5,7 +5,7 @@
     <register-input
       label="昵称"
       v-model="nickname"
-      :error="nameError">
+      :error="nicknameError">
     </register-input>
     <register-input
       type="password"
@@ -21,6 +21,7 @@
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
+import User from 'models/user'
 
 export default {
   name: 'RegisterConfirm',
@@ -35,13 +36,43 @@ export default {
       description: '补全信息后，即可创建开饭账号',
       nickname: '',
       password: '',
-      nameError: false,
+      nicknameError: false,
       passwordError: false
     }
   },
   methods: {
     onConfirm () {
-      console.log(this.username)
+      if (!this.nicknameError && !this.passwordError) {
+        const Email = 100
+        User.register(
+          this.$store.state.email,
+          this.password,
+          Email,
+          this.nickname
+        )
+      }
+    },
+    checkPassword () {
+      return this.password !== ''
+    },
+    checkNickname () {
+      return this.nickname !== ''
+    }
+  },
+  watch: {
+    nickname (value) {
+      if (!this.checkNickname(value)) {
+        this.nicknameError = true
+        return
+      }
+      this.nicknameError = false
+    },
+    password (value) {
+      if (!this.checkPassword(value)) {
+        this.passwordError = true
+        return
+      }
+      this.passwordError = false
     }
   }
 }

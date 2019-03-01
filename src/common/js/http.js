@@ -5,8 +5,8 @@ import store from 'store/index'
 import state from 'store/state'
 
 axios.defaults.timeout = 5000
-// axios.defaults.baseURL = 'http://localhost:5000/v1'
-axios.defaults.baseURL = 'http://api.foodadvisor.top/v1'
+axios.defaults.baseURL = 'http://localhost:5000/v1'
+// axios.defaults.baseURL = 'http://api.foodadvisor.top/v1'
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {

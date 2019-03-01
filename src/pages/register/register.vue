@@ -34,17 +34,9 @@ export default {
   },
   methods: {
     onConfirm () {
-      this.axios.get('/user/2')
-        .then(function (response) {
-          console.log('response')
-          console.log(this.$store.state.token)
-          console.log(response)
-        })
-      if (this.checkEmail()) {
+      if (!this.emailError) {
         this.$store.commit(types.SET_EMAIL, this.email)
         this.$router.push('/register/confirm')
-      } else {
-        this.emailError = true
       }
     },
     checkEmail () {
@@ -54,6 +46,15 @@ export default {
   },
   mounted () {
     this.email = this.$store.state.email
+  },
+  watch: {
+    email (value) {
+      if (!this.checkEmail(value)) {
+        this.emailError = true
+        return
+      }
+      this.emailError = false
+    }
   }
 }
 </script>
