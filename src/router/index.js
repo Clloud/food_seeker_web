@@ -8,6 +8,7 @@ import Search from 'pages/search/search'
 import Register from 'pages/register/register'
 import RegisterConfirm from 'pages/register/register-confirm'
 import Login from 'pages/login/login'
+import Restaurant from 'pages/restaurant/restaurant'
 
 Vue.use(Router)
 
@@ -15,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/register'
+      redirect: '/restaurant'
     },
     {
       path: '/my',
@@ -50,6 +51,12 @@ export default new Router({
       components: {
         'default': Login,
         'nav-bar': NavBar
+      }
+    },
+    {
+      path: '/restaurant',
+      components: {
+        'default': Restaurant
       }
     }
   ]

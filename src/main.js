@@ -6,11 +6,14 @@ import router from './router'
 import fastclick from 'fastclick'
 import store from './store'
 import axios from 'common/js/http'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'common/style/index.styl'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 fastclick.attach(document.body)
 Vue.prototype.axios = axios
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({

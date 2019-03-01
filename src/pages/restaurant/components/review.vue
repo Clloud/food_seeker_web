@@ -1,0 +1,60 @@
+<template>
+  <div class="review">
+    <div class="info">
+      <div class="left-part">
+        <img :src="review.user.avatar_url" alt="" class="avatar" />
+      </div>
+      <div>
+        <div class="right-part">
+          <div class="nickname">{{ review.user.nickname }}</div>
+          <div class="time">{{ review.create_time }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="content">{{ review.content }}</div>
+  </div>
+</template>
+
+<script type="text/ecmascript-6">
+export default {
+  name: 'Review',
+  props: {
+    review: Object
+  }
+}
+</script>
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+@import '~common/style/variable'
+@import '~common/style/mixin'
+
+.review
+  display: flex
+  flex-direction: column
+  background: #fafafa
+  border-radius: 5px
+  padding: 8px
+  box-sizing: border-box
+  margin-bottom: 18px
+  .info
+    display: flex
+    .left-part
+      .avatar
+        width: 45px
+        height: 45px
+        border-radius: 45px
+        background: #eeeeee
+    .right-part
+      margin: 2px 0  0 12px
+      display: flex
+      flex-direction: column
+      .nickname
+        font-weight: bold
+        margin-bottom: 8px
+      .time
+        font-size: $font-size-small
+  .content
+    font-size: $font-size-medium-x
+    line-height: 22px
+    ellipsis(3)
+</style>
