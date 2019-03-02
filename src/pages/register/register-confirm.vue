@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <nav-bar></nav-bar>
     <register-header :title="title" :description="description" class="header">
     </register-header>
     <register-input
@@ -18,6 +19,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import NavBar from 'components/nav-bar/nav-bar'
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
@@ -26,6 +28,7 @@ import User from 'models/user'
 export default {
   name: 'RegisterConfirm',
   components: {
+    NavBar,
     MainButton,
     RegisterHeader,
     RegisterInput
@@ -42,7 +45,8 @@ export default {
   },
   methods: {
     onConfirm () {
-      if (!this.nicknameError && !this.passwordError) {
+      if (!this.nicknameError && !this.passwordError &&
+        this.nickname && this.password) {
         const Email = 100
         User.register(
           this.$store.state.email,

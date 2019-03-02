@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <nav-bar></nav-bar>
     <login-header :title="title" class="header"></login-header>
     <login-input
       label="邮箱"
@@ -17,6 +18,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import NavBar from 'components/nav-bar/nav-bar'
 import LoginHeader from 'components/header/header'
 import LoginInput from 'components/input/input'
 import MainButton from 'components/main-button/main-button'
@@ -26,6 +28,7 @@ import Token from 'common/js/token'
 export default {
   name: 'Login',
   components: {
+    NavBar,
     LoginHeader,
     LoginInput,
     MainButton

@@ -7,8 +7,8 @@
         <div class="content">{{ intro }}</div>
       </item>
       <item title="评价" button="查看更多评价" @click="onClick">
-        <review v-for="review in reviews" 
-          :key="review.id" 
+        <review v-for="review in reviews"
+          :key="review.id"
           :review="review">
         </review>
       </item>
@@ -35,57 +35,18 @@ export default {
     return {
       images: [
         {
-          "id": 1,
-          "url": "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg"
+          'id': 1,
+          'url': 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg'
         },
         {
-          "id": 2,
-          "url": "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg"
+          'id': 2,
+          'url': 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg'
         }
       ],
       name: '汤哥特色风味',
       intro: '这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍',
       location: '四食堂二楼',
-      reviews: [{
-        "user": {
-          "nickname": "Cloud",
-          "avatar_url": "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg"
-        },
-        "content": "我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子！",
-        "create_time": 1549967536,
-        "grade": 1,
-        "id": 1,
-        "images": [
-          {
-            "id": 1,
-            "url": "http://api.foodadvisor.top/food_seeker/images/20190212/2f46051c2e9811e9aaf754ee75dc7dce.jpg"
-          },
-          {
-            "id": 8,
-            "url": "http://api.foodadvisor.top/food_seeker/images/20190212/d6a31b622ea211e9be1654ee75dc7dce.jpg"
-          }
-        ]
-      },
-      {
-        "user": {
-          "nickname": "Cloud",
-          "avatar_url": "http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg"
-        },
-        "content": "我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子我吃到了虫子！",
-        "create_time": 1549967536,
-        "grade": 1,
-        "id": 2,
-        "images": [
-          {
-            "id": 1,
-            "url": "http://api.foodadvisor.top/food_seeker/images/20190212/2f46051c2e9811e9aaf754ee75dc7dce.jpg"
-          },
-          {
-            "id": 8,
-            "url": "http://api.foodadvisor.top/food_seeker/images/20190212/d6a31b622ea211e9be1654ee75dc7dce.jpg"
-          }
-        ]
-      }]
+      reviews: []
     }
   },
   methods: {

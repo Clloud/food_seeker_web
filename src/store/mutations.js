@@ -9,6 +9,9 @@ const mutations = {
     try {
       localStorage.token = token
     } catch (e) { }
+  },
+  [types.SET_SEARCH_HISTORY] (state, history) {
+    state.searchHistory = history
   }
 }
 

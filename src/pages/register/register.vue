@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <nav-bar></nav-bar>
     <register-header :title="title" class="header">
     </register-header>
     <register-input
@@ -14,6 +15,7 @@
 
 <script type="text/ecmascript-6">
 import * as types from 'store/mutation-types'
+import NavBar from 'components/nav-bar/nav-bar'
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
@@ -21,6 +23,7 @@ import RegisterInput from 'components/input/input'
 export default {
   name: 'Register',
   components: {
+    NavBar,
     MainButton,
     RegisterHeader,
     RegisterInput
@@ -34,7 +37,7 @@ export default {
   },
   methods: {
     onConfirm () {
-      if (!this.emailError) {
+      if (!this.emailError && this.email) {
         this.$store.commit(types.SET_EMAIL, this.email)
         this.$router.push('/register/confirm')
       }

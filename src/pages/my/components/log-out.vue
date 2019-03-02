@@ -4,7 +4,9 @@
       <div class="iconfont mail">&#xe769;</div>
       <div class="text">使用邮箱登录</div>
     </router-link>
-    <router-link to="/register" class="register">注册</router-link>
+    <div class="register-container">
+      <router-link tag="span" to="/register" class="register">注册</router-link>
+    </div>
   </div>
 </template>
 
@@ -15,7 +17,8 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-@import '~common/style/variable.styl'
+@import '~common/style/variable'
+@import '~common/style/mixin'
 
 .container
   display: flex
@@ -39,9 +42,11 @@ export default {
       font-size: $font-size-large-xxx
       position: absolute
       left: 16px
-  .register
+  .register-container
     width: 85%
     max-width: 318.75px
-    font-size: $font-size-medium-x
-    color: $color-theme
+    .register
+      font-size: $font-size-medium-x
+      color: $color-theme
+      extend-click()
 </style>

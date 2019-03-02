@@ -20,18 +20,18 @@ export default {
       tabs: [
         {
           to: '/search',
-          icon: '&#xe615;',
-          text: '搜索'
+          icon: '&#xe615;'
+          // text: '搜索'
+        },
+        {
+          to: '/add-review',
+          icon: '&#xe752;'
+          // text: '点评'
         },
         {
           to: '/my',
-          icon: '&#xe62c;',
-          text: '我的'
-        },
-        {
-          to: '/register',
-          icon: '&#xe62c;',
-          text: '注册'
+          icon: '&#xe62c;'
+          // text: '我的'
         }
       ]
     }

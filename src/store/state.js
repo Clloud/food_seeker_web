@@ -1,4 +1,5 @@
 export default {
   email: '',
-  token: 'token'
+  token: 'token',
+  searchHistory: []
 }

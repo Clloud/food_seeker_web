@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TabBar from 'components/tab-bar/tab-bar'
-import NavBar from 'components/nav-bar/nav-bar'
 
 import My from 'pages/my/my'
 import Search from 'pages/search/search'
@@ -9,6 +8,7 @@ import Register from 'pages/register/register'
 import RegisterConfirm from 'pages/register/register-confirm'
 import Login from 'pages/login/login'
 import Restaurant from 'pages/restaurant/restaurant'
+import AddReview from 'pages/add-review/add-review'
 
 Vue.use(Router)
 
@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/restaurant'
+      redirect: '/search'
     },
     {
       path: '/my',
@@ -34,30 +34,23 @@ export default new Router({
     },
     {
       path: '/register',
-      components: {
-        'default': Register,
-        'nav-bar': NavBar
-      }
+      component: Register
     },
     {
       path: '/register/confirm',
-      components: {
-        'default': RegisterConfirm,
-        'nav-bar': NavBar
-      }
+      component: RegisterConfirm
     },
     {
       path: '/login',
-      components: {
-        'default': Login,
-        'nav-bar': NavBar
-      }
+      component: Login
     },
     {
       path: '/restaurant',
-      components: {
-        'default': Restaurant
-      }
+      component: Restaurant
+    },
+    {
+      path: '/add-review',
+      component: AddReview
     }
   ]
 })
