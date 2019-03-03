@@ -6,7 +6,11 @@
         <span class="title">{{ title }}</span>
       </div>
       <div class="right-part">
-        <span class="button">{{ button }}</span>
+        <span class="button"
+          @click="submit"
+          :class="{'activated': buttonActivated}">
+          {{ button }}
+        </span>
       </div>
     </div>
   </div>
@@ -17,11 +21,15 @@ export default {
   name: 'NavBar',
   props: {
     title: String,
-    button: String
+    button: String,
+    buttonActivated: Boolean
   },
   methods: {
     back () {
       this.$router.back()
+    },
+    submit () {
+      this.$emit('submit')
     }
   }
 }

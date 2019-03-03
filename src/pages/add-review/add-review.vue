@@ -1,9 +1,13 @@
 <template>
   <div class="page">
-    <nav-bar title="写点评" button="发布"></nav-bar>
-    <rating title="口味"></rating>
-    <rating title="舒适度"></rating>
-    <review-content></review-content>
+    <nav-bar title="写点评"
+      button="发布"
+      @submit="onSubmit"
+      :buttonActivated="buttonActivated">
+    </nav-bar>
+    <rating title="口味" ref="taste"></rating>
+    <rating title="舒适度" ref="comfort"></rating>
+    <review-content ref="content"></review-content>
   </div>
 </template>
 
@@ -18,6 +22,24 @@ export default {
     NavBar,
     Rating,
     ReviewContent
+  },
+  data () {
+    return {
+      content: '',
+      buttonActivated: false
+    }
+  },
+  mounted () {
+  },
+  methods: {
+    onSubmit () {
+      let tasteRank = this.$refs.taste.rank
+      let comfortRank = this.$refs.comfort.rank
+      let content = this.$refs.content.value
+      console.log(tasteRank)
+      console.log(comfortRank)
+      console.log(content)
+    }
   }
 }
 </script>
