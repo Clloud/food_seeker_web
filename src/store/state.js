@@ -1,5 +1,6 @@
 export default {
   email: '',
-  token: 'token',
-  searchHistory: []
+  token: '',
+  searchHistory: [],
+  assosiateRestaurant: null
 }

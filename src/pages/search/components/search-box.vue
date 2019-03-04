@@ -145,6 +145,7 @@ export default {
         .icon-close
           font-size: $font-size-medium
           font-weight: bold
+          margin-right: 12px
           extend-click()
         .icon-search
           color: #a2a7a8

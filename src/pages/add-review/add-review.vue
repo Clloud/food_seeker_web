@@ -8,6 +8,8 @@
     <rating title="口味" ref="taste"></rating>
     <rating title="舒适度" ref="comfort"></rating>
     <review-content ref="content"></review-content>
+    <merchant :restaurant="restaurant" @open="open"></merchant>
+    <assosiate-restaurant :open="activated" @close="close"></assosiate-restaurant>
   </div>
 </template>
 
@@ -15,31 +17,51 @@
 import NavBar from 'components/nav-bar/nav-bar'
 import Rating from './components/rating'
 import ReviewContent from './components/review-content'
+import Merchant from './components/merchant'
+import AssosiateRestaurant from './components/assosiate-restaurant'
 
 export default {
   name: 'AddReview',
   components: {
     NavBar,
     Rating,
-    ReviewContent
+    ReviewContent,
+    Merchant,
+    AssosiateRestaurant
   },
   data () {
     return {
       content: '',
-      buttonActivated: false
+      buttonActivated: true,
+      activated: false
     }
   },
-  mounted () {
+  computed: {
+    restaurant () {
+      return this.$store.state.assosiateRestaurant
+    }
   },
   methods: {
+    open () {
+      this.activated = true
+    },
+    close () {
+      this.activated = false
+    },
     onSubmit () {
       let tasteRank = this.$refs.taste.rank
       let comfortRank = this.$refs.comfort.rank
       let content = this.$refs.content.value
-      console.log(tasteRank)
-      console.log(comfortRank)
-      console.log(content)
+      let restaurant = this.restaurant
+      if (tasteRank && comfortRank && content && restaurant) {
+        console.log(tasteRank)
+        console.log(comfortRank)
+        console.log(content)
+        console.log(restaurant.id)
+      }
     }
+  },
+  watch: {
   }
 }
 </script>

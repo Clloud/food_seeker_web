@@ -37,7 +37,7 @@ export default {
 @import '~common/style/variable'
 
 .container
-  margin-top: 12px
+  margin: 12px 0 24px
   width: 85%
   .textarea
     width: 100%
@@ -51,7 +51,7 @@ export default {
     line-height: 26px
     letter-spacing: 0.5px
     color: #000
-    border-bottom: 1px solid red
+    // border-bottom: 1px solid red
   .placeholder
     font-size: $font-size-large
     letter-spacing: 0.5px
