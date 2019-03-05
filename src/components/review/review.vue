@@ -33,7 +33,7 @@ export default {
   flex-direction: column
   background: #fafafa
   border-radius: 5px
-  padding: 8px
+  padding: 16px
   box-sizing: border-box
   margin-bottom: 18px
   .info

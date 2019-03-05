@@ -2,5 +2,6 @@ export default {
   email: '',
   token: '',
   searchHistory: [],
-  assosiateRestaurant: null
+  assosiateRestaurant: null,
+  restaurants: []
 }

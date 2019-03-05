@@ -6,7 +6,7 @@
       :buttonActivated="buttonActivated">
     </nav-bar>
     <rating title="口味" ref="taste"></rating>
-    <rating title="舒适度" ref="comfort"></rating>
+    <!-- <rating title="舒适度" ref="comfort"></rating> -->
     <review-content ref="content"></review-content>
     <merchant :restaurant="restaurant" @open="open"></merchant>
     <assosiate-restaurant :open="activated" @close="close"></assosiate-restaurant>
@@ -50,12 +50,12 @@ export default {
     },
     onSubmit () {
       let tasteRank = this.$refs.taste.rank
-      let comfortRank = this.$refs.comfort.rank
+      // let comfortRank = this.$refs.comfort.rank
       let content = this.$refs.content.value
       let restaurant = this.restaurant
-      if (tasteRank && comfortRank && content && restaurant) {
+      if (tasteRank /* && comfortRank */ && content && restaurant) {
         console.log(tasteRank)
-        console.log(comfortRank)
+        // console.log(comfortRank)
         console.log(content)
         console.log(restaurant.id)
       }

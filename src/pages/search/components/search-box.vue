@@ -4,7 +4,7 @@
       <div class="header-container">
         <div class="header">
           <div class="iconfont icon-close"
-            @click="onClose">&#xe624;
+            @click="onClose">&#xe612;
           </div>
           <input type="text"
             v-model="keyword"
@@ -67,8 +67,9 @@ export default {
     },
     onSearch () {
       if (this.keyword) {
-        this.fullScreen = false
+        this.onClose()
         this._addHistory()
+        this.$emit('search', this.keyword)
       }
     },
     onDelete (index) {
@@ -103,6 +104,8 @@ export default {
   width: 100%
   display: flex
   justify-content: center
+  position: fixed
+  background: #fff
   .box
     width: 85%
     display: flex
@@ -143,9 +146,10 @@ export default {
         display: flex
         align-items: center
         .icon-close
-          font-size: $font-size-medium
+          font-size: $font-size-large-x
           font-weight: bold
           margin-right: 12px
+          padding-top: 2px
           extend-click()
         .icon-search
           color: #a2a7a8

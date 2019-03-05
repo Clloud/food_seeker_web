@@ -6,13 +6,13 @@
       <item title="介绍" button="查看详情">
         <div class="content">{{ intro }}</div>
       </item>
-      <item title="评价" button="查看更多评价" @click="onClick">
+      <item title="点评" button="查看更多点评" @click="onClick">
         <review v-for="review in reviews"
           :key="review.id"
           :review="review">
         </review>
       </item>
-      <item title="位置">{{location}}</item>
+      <item title="位置">{{ location }}</item>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import RestaurantSwiper from './components/swiper'
 import RestaurantHeader from './components/header'
 import Item from './components/item'
-import Review from './components/review'
+import Review from 'components/review/review'
 
 export default {
   name: 'Restaurant',
@@ -59,7 +59,7 @@ export default {
     getReviews () {
       this.axios.get('/restaurant/1/reviews?per_page=3')
         .then((data) => {
-          console.log(data)
+          this.reviews = data
         })
     },
     onClick () {
