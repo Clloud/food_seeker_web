@@ -43,7 +43,7 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-      keyword: '',
+      keyword: 'r',
       fullScreen: false,
       recommend: '搜索食堂试试',
       placeholder: '想吃什么？',

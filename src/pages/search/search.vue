@@ -14,6 +14,7 @@ import SearchBox from './components/search-box'
 import RestaurantBlock from './components/restaurant'
 import ReviewBlock from './components/review'
 import FoodBlock from './components/food'
+import * as types from 'store/mutation-types'
 
 export default {
   name: 'Search',
@@ -27,7 +28,7 @@ export default {
     search (keyword) {
       this.axios.get('/search/restaurants?per_page=3&q=' + keyword)
         .then((data) => {
-          console.log(data)
+          this.$store.commit(types.SET_RESTAURANTS, data)
         })
     }
   }

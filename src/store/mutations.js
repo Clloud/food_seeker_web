@@ -15,6 +15,9 @@ const mutations = {
   },
   [types.SET_ASSOSIATE_RESTAURANT] (state, restaurant) {
     state.assosiateRestaurant = restaurant
+  },
+  [types.SET_RESTAURANTS] (state, restaurants) {
+    state.restaurants = restaurants
   }
 }
 

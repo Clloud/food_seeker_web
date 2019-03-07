@@ -9,6 +9,7 @@ import RegisterConfirm from 'pages/register/register-confirm'
 import Login from 'pages/login/login'
 import Restaurant from 'pages/restaurant/restaurant'
 import AddReview from 'pages/add-review/add-review'
+import Review from 'pages/review/review'
 
 Vue.use(Router)
 
@@ -45,8 +46,12 @@ export default new Router({
       component: Login
     },
     {
-      path: '/restaurant',
+      path: '/restaurant/:id',
       component: Restaurant
+    },
+    {
+      path: '/restaurant/:id/review',
+      component: Review
     },
     {
       path: '/add-review',

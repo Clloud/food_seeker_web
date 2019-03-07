@@ -1,17 +1,27 @@
 <template>
   <block title="食堂窗口" button="查看全部窗口">
     <div class="restaurants">
-      <div class="restaurant">
+      <div class="restaurant"
+        v-for="restaurant in restaurants"
+        :key="restaurant.id"
+        @click="toRestaurant(restaurant.id)">
         <div class="left-part">
-          <div class="image"></div>
+          <div class="image-container">
+            <img :src="imageUrl(restaurant.images)" class="image" />
+          </div>
         </div>
         <div class="right-part">
-          <div class="title">这是一家餐馆的名字</div>
+          <div class="title">{{ restaurant.name }}</div>
           <div class="rating">
-            <span class="stars">
-              <span class="iconfont icon-star" v-for="i in 4" :key="i">&#xe6b0;</span>
+            <span class="stars" v-if="restaurant.review_amount">
+              <span class="iconfont icon-star"
+                v-for="i in rating(restaurant.grade)"
+                :key="i">&#xe6b0;</span>
             </span>
-            <span class="amount">327</span>
+            <span class="amount" v-if="restaurant.review_amount">
+              {{ restaurant.review_amount }}
+            </span>
+            <span v-else class="amount">暂无评分</span>
           </div>
         </div>
       </div>
@@ -21,19 +31,26 @@
 
 <script type="text/ecmascript-6">
 import Block from './block'
+import { mapState } from 'vuex'
 
 export default {
   name: 'RestaurantBlock',
   components: {
     Block
   },
-  data () {
-    return {
-      restaurants: []
-    }
+  computed: {
+    ...mapState(['restaurants'])
   },
-  mounted () {
-    this.restaurants = this.$store.state.restaurants
+  methods: {
+    rating (grade) {
+      return Math.round(grade)
+    },
+    imageUrl (images) {
+      return images.length ? images[0].url : ''
+    },
+    toRestaurant (id) {
+      this.$router.push('/restaurant/' + id)
+    }
   }
 }
 </script>
@@ -50,15 +67,21 @@ export default {
     margin-bottom: 24px
     .left-part
       margin-right: 18px
-      .image
+      .image-container
+        display: flex
+        align-items: center
         height: 96px
         width: 144px
-        background: #999
+        background: $color-image-background
         border-radius: 3.5px
+        overflow: hidden
+        .image
+          width: 100%
     .right-part
       display: flex
       flex-direction: column
       justify-content: space-between
+      padding: 0 0 3px
       .title
         font-size: $font-size-large
         line-height: 24px

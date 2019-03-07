@@ -2,11 +2,11 @@
   <div>
     <restaurant-swiper :images="images"></restaurant-swiper>
     <div class="wrapper">
-      <restaurant-header :name="name"></restaurant-header>
+      <restaurant-header :name="restaurant.name"></restaurant-header>
       <item title="介绍" button="查看详情">
-        <div class="content">{{ intro }}</div>
+        <div class="content">{{ restaurant.introduction }}</div>
       </item>
-      <item title="点评" button="查看更多点评" @click="onClick">
+      <item title="点评" button="查看更多点评" @click="moreReview">
         <review v-for="review in reviews"
           :key="review.id"
           :review="review">
@@ -33,42 +33,32 @@ export default {
   },
   data () {
     return {
-      images: [
-        {
-          'id': 1,
-          'url': 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg'
-        },
-        {
-          'id': 2,
-          'url': 'http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg'
-        }
-      ],
-      name: '汤哥特色风味',
-      intro: '这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍这是一些介绍',
-      location: '四食堂二楼',
-      reviews: []
+      restaurant: null,
+      reviews: [],
+      reviewCount: 3
     }
   },
   methods: {
-    getRestaurant () {
-      this.axios.get('/restaurant/1')
+    getRestaurant (id) {
+      this.axios.get('/restaurant/' + id)
         .then((data) => {
-          console.log(data)
+          this.restaurant = data
         })
     },
-    getReviews () {
-      this.axios.get('/restaurant/1/reviews?per_page=3')
+    getReviews (id) {
+      this.axios.get(`/restaurant/${id}/reviews?per_page=${this.reviewCount}`)
         .then((data) => {
           this.reviews = data
         })
     },
-    onClick () {
-      console.log('click')
+    moreReview () {
+      this.$router.push(`/restaurant/${this.$route.params.id}/review`)
     }
   },
   mounted () {
-    this.getRestaurant()
-    this.getReviews()
+    let id = this.$route.params.id
+    this.getRestaurant(id)
+    this.getReviews(id)
   }
 }
 </script>
