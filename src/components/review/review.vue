@@ -2,7 +2,11 @@
   <div class="review">
     <div class="info">
       <div class="left-part">
-        <img :src="review.user.avatar_url" alt="" class="avatar" />
+        <div class="image-wrapper">
+          <img class="avatar"
+          :src="review.user.avatar_url"
+          v-if="review.user.avatar_url"/>
+        </div>
       </div>
       <div>
         <div class="right-part">
@@ -39,11 +43,17 @@ export default {
   .info
     display: flex
     .left-part
-      .avatar
+      .image-wrapper
         width: 45px
         height: 45px
         border-radius: 45px
-        background: #eeeeee
+        background: $color-image-background
+        overflow: hidden
+        .avatar
+          width: 45px
+          height: 45px
+          border-radius: 45px
+          background: #eeeeee
     .right-part
       margin: 2px 0  0 12px
       display: flex
