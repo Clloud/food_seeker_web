@@ -7,7 +7,7 @@
       <div>
         <div class="right-part">
           <div class="nickname">{{ review.user.nickname }}</div>
-          <div class="time">{{ review.create_time }}</div>
+          <div class="time" v-time="review.create_time"></div>
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@ export default {
         margin-bottom: 8px
       .time
         font-size: $font-size-small
+        font-family: 'PingFang SC'
   .content
     font-size: $font-size-medium-x
     line-height: 22px

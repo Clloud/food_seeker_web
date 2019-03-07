@@ -7,6 +7,7 @@ import fastclick from 'fastclick'
 import store from './store'
 import axios from 'common/js/http'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import time from 'directives/time'
 import 'common/style/index.styl'
 import 'swiper/dist/css/swiper.css'
 
@@ -14,6 +15,7 @@ Vue.config.productionTip = false
 fastclick.attach(document.body)
 Vue.prototype.axios = axios
 Vue.use(VueAwesomeSwiper)
+Vue.directive('time', time)
 
 /* eslint-disable no-new */
 new Vue({

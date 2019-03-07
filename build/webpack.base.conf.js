@@ -41,7 +41,8 @@ module.exports = {
       'store': resolve('src/store'),
       'router': resolve('src/router'),
       'models': resolve('src/models'),
-      'pages': resolve('src/pages')
+      'pages': resolve('src/pages'),
+      'directives': resolve('src/directives')
     }
   },
   module: {
