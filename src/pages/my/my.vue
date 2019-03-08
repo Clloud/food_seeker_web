@@ -1,26 +1,22 @@
 <template>
   <div class="page">
-    <my-header :title="title" :description="description" class="header">
-    </my-header>
-    <log-out></log-out>
+    <profile v-if="$store.state.token"></profile>
+    <log-out v-else></log-out>
+    <items></items>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import MyHeader from 'components/header/header'
 import LogOut from './components/log-out'
+import Profile from './components/profile'
+import Items from './components/items'
 
 export default {
   name: 'My',
   components: {
-    MyHeader,
-    LogOut
-  },
-  data () {
-    return {
-      title: '我的',
-      description: '登录开饭，体验更多功能'
-    }
+    LogOut,
+    Profile,
+    Items
   }
 }
 </script>

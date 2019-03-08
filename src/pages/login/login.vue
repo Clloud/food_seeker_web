@@ -23,7 +23,7 @@ import LoginHeader from 'components/header/header'
 import LoginInput from 'components/input/input'
 import MainButton from 'components/main-button/main-button'
 import * as types from 'store/mutation-types'
-import Token from 'common/js/token'
+// import Token from 'common/js/token'
 
 export default {
   name: 'Login',
@@ -47,7 +47,20 @@ export default {
       if (!this.emailError && !this.passwordError) {
         const EMAIL = 100
         this.$store.commit(types.SET_EMAIL, this.email)
-        Token.get(this.email, this.password, EMAIL)
+        // Token.get(this.email, this.password, EMAIL)
+        this.axios.post('/token/auth', {
+          account: this.email,
+          secret: this.password,
+          type: EMAIL
+        })
+          .then((data) => {
+            this.$store.commit(types.SET_TOKEN, data.token)
+            this.$router.replace('/my')
+          })
+          .catch(() => {
+            this.emailError = true
+            this.passwordError = true
+          })
       }
     },
     checkEmail () {

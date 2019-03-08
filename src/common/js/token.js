@@ -19,8 +19,11 @@ export default class Token {
       type: type
     })
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         store.commit(types.SET_TOKEN, data.token)
+      })
+      .catch((error) => {
+        return error
       })
   }
 }

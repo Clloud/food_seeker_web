@@ -42,6 +42,7 @@ export default {
   margin-bottom: 18px
   .info
     display: flex
+    margin-bottom: 12px
     .left-part
       .image-wrapper
         width: 45px

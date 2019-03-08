@@ -4,7 +4,11 @@
     <div class="merchant"
       v-if="restaurant">
       <div class="left-part">
-        <div class="image"></div>
+        <div class="image-wrapper">
+          <img :src="imageUrl(restaurant.images)"
+            class="image"
+            v-if="restaurant.images.length">
+        </div>
       </div>
       <div class="right-part">
         <div class="name">{{ restaurant.name }}</div>
@@ -32,6 +36,9 @@ export default {
     },
     onSelect () {
       this.$emit('open')
+    },
+    imageUrl (images) {
+      return images.length ? images[0].url : ''
     }
   }
 }
@@ -63,11 +70,15 @@ export default {
       color: $color-shadow-d
     .left-part
       margin-right: 12px
-      .image
+      .image-wrapper
         width: 50px
         height: 50px
         border-radius: 3px
         background: #eee
+        overflow: hidden
+        .image
+          width: 50px
+          height: 50px
     .right-part
       display: flex
       flex-direction: column

@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <my-header :title="title" :description="description" class="header">
+    </my-header>
     <router-link to="/login" class="button" tag="div">
       <div class="iconfont mail">&#xe769;</div>
       <div class="text">使用邮箱登录</div>
@@ -11,8 +13,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+import MyHeader from 'components/header/header'
+
 export default {
-  name: 'LogOut'
+  name: 'LogOut',
+  components: {
+    MyHeader
+  },
+  data () {
+    return {
+      title: '我的',
+      description: '登录开饭，体验更多功能'
+    }
+  }
 }
 </script>
 

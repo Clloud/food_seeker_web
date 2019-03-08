@@ -7,7 +7,8 @@
       label="邮箱"
       v-model="email"
       :value="email"
-      :error="emailError">
+      :error="emailError"
+      :messages="messages">
     </register-input>
     <main-button @confirm="onConfirm">下一步</main-button>
   </div>
@@ -32,14 +33,23 @@ export default {
     return {
       title: '注册开饭',
       email: '',
-      emailError: false
+      emailError: false,
+      messages: []
     }
   },
   methods: {
     onConfirm () {
       if (!this.emailError && this.email) {
-        this.$store.commit(types.SET_EMAIL, this.email)
-        this.$router.push('/register/confirm')
+        this.axios.get('/search/users?q=email:' + this.email)
+          .then((data) => {
+            if (data.total_count === 0) {
+              this.$store.commit(types.SET_EMAIL, this.email)
+              this.$router.push('/register/confirm')
+            } else {
+              this.emailError = true
+              this.messages = ['邮箱已注册']
+            }
+          })
       }
     },
     checkEmail () {

@@ -10,6 +10,9 @@ const mutations = {
       localStorage.token = token
     } catch (e) { }
   },
+  [types.SET_UID] (state, uid) {
+    state.uid = uid
+  },
   [types.SET_SEARCH_HISTORY] (state, history) {
     state.searchHistory = history
   },
@@ -18,6 +21,12 @@ const mutations = {
   },
   [types.SET_RESTAURANTS] (state, restaurants) {
     state.restaurants = restaurants
+  },
+  [types.SET_REVIEWS] (state, reviews) {
+    state.reviews = reviews
+  },
+  [types.SET_FOODS] (state, foods) {
+    state.foods = foods
   }
 }
 

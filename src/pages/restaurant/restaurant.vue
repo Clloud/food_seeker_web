@@ -12,7 +12,7 @@
           :review="review">
         </review>
       </item>
-      <item title="位置">{{ location }}</item>
+      <item title="位置">{{ restaurant.location }}</item>
     </div>
   </div>
 </template>
@@ -34,8 +34,7 @@ export default {
   data () {
     return {
       restaurant: null,
-      reviews: [],
-      reviewCount: 3
+      reviews: []
     }
   },
   methods: {

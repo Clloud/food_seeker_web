@@ -12,6 +12,7 @@
 <script type="text/ecmascript-6">
 import Block from './block'
 import Review from 'components/review/review'
+import { mapState } from 'vuex'
 
 export default {
   name: 'ReviewBlock',
@@ -19,21 +20,8 @@ export default {
     Block,
     Review
   },
-  data () {
-    return {
-      reviews: []
-    }
-  },
-  methods: {
-    getReviews () {
-      this.axios.get('/restaurant/1/reviews?per_page=3')
-        .then((data) => {
-          this.reviews = data
-        })
-    }
-  },
-  mounted () {
-    this.getReviews()
+  computed: {
+    ...mapState(['reviews'])
   }
 }
 </script>

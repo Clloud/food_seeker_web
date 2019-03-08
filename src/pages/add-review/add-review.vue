@@ -19,6 +19,7 @@ import Rating from './components/rating'
 import ReviewContent from './components/review-content'
 import Merchant from './components/merchant'
 import AssosiateRestaurant from './components/assosiate-restaurant'
+import * as types from 'store/mutation-types'
 
 export default {
   name: 'AddReview',
@@ -58,10 +59,26 @@ export default {
         // console.log(comfortRank)
         console.log(content)
         console.log(restaurant.id)
+        this.axios.post('review', {
+          restaurant_id: restaurant.id,
+          content: content,
+          grade: tasteRank,
+          image_amount: 0
+        })
+          .then((data) => {
+            this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, null)
+            this.$router.replace('/my/review')
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       }
     }
   },
-  watch: {
+  beforeMount () {
+    if (!localStorage.token) {
+      this.$router.replace('/login')
+    }
   }
 }
 </script>

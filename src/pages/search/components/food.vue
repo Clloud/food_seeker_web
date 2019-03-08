@@ -7,16 +7,19 @@
 
 <script type="text/ecmascript-6">
 import Block from './block'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'ReviewBlock',
+  name: 'FoodBlock',
   components: {
     Block
   },
   data () {
     return {
-      foods: []
     }
+  },
+  computed: {
+    ...mapState(['foods'])
   },
   methods: {
   },

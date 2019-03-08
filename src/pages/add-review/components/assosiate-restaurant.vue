@@ -21,7 +21,11 @@
         :key="restaurant.id"
         @click="onSelect(index)">
         <div class="left-part">
-          <div class="image"></div>
+          <div class="image-wrapper">
+            <img :src="imageUrl(restaurant.images)"
+              class="image"
+              v-if="restaurant.images.length">
+          </div>
         </div>
         <div class="right-part">
           <div class="name">{{ restaurant.name }}</div>
@@ -47,13 +51,7 @@ export default {
     return {
       placeholder: '商户名称？',
       keyword: '',
-      restaurants: [
-        {
-          id: '1',
-          name: '第四食堂',
-          location: '某个地点 地点'
-        }
-      ]
+      restaurants: []
     }
   },
   computed: {
@@ -67,12 +65,18 @@ export default {
     },
     onSearch () {
       if (this.keyword) {
-        console.log('search')
+        this.axios.get('/search/restaurants?q=' + this.keyword)
+          .then((data) => {
+            this.restaurants = data.items
+          })
       }
     },
     onSelect (index) {
       this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, this.restaurants[index])
       this.onClose()
+    },
+    imageUrl (images) {
+      return images.length ? images[0].url : ''
     }
   }
 }
@@ -139,11 +143,15 @@ export default {
       border-bottom: 1px solid $color-border
       .left-part
         margin-right: 18px
-        .image
+        .image-wrapper
           width: 50px
           height: 50px
           border-radius: 3px
           background: #eee
+          overflow: hidden
+          .image
+            width: 50px
+            height: 50px
       .right-part
         display: flex
         flex-direction: column

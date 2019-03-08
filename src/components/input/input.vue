@@ -6,6 +6,12 @@
       :class="{'alert': error}"
       :value="value"
       @input="updateValue">
+    <div class="messages" v-if="messages.length">
+      <div class="message" v-for="(message, index) in messages"
+      :key="index">
+        {{ message }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +34,12 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    messages: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   },
   methods: {
@@ -59,4 +71,12 @@ export default {
       border-bottom: 3px solid $color-theme
   .alert
     border-bottom: 3px solid $color-alert
+  .messages
+    display: flex
+    flex-direction: column
+    margin-top: 8px
+    .message
+      font-size: $font-size-medium
+      color: $color-alert
+      line-height: 24px
 </style>
