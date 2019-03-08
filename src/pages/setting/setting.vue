@@ -18,6 +18,7 @@ export default {
     logout () {
       localStorage.token = ''
       this.$store.commit(types.SET_TOKEN, '')
+      this.$store.commit(types.SET_UID, 0)
       this.$router.back()
     }
   }

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <restaurant-swiper :images="images"></restaurant-swiper>
+    <nav-bar></nav-bar>
+    <restaurant-swiper :images="restaurant.images"></restaurant-swiper>
     <div class="wrapper">
       <restaurant-header :name="restaurant.name"></restaurant-header>
       <item title="介绍" button="查看详情">
@@ -22,6 +23,7 @@ import RestaurantSwiper from './components/swiper'
 import RestaurantHeader from './components/header'
 import Item from './components/item'
 import Review from 'components/review/review'
+import NavBar from 'components/nav-bar/nav-bar'
 
 export default {
   name: 'Restaurant',
@@ -29,12 +31,19 @@ export default {
     RestaurantSwiper,
     RestaurantHeader,
     Item,
-    Review
+    Review,
+    NavBar
   },
   data () {
     return {
-      restaurant: null,
-      reviews: []
+      restaurant: {
+        name: '',
+        introduction: '',
+        location: '',
+        images: []
+      },
+      reviews: [],
+      reviewCount: 3
     }
   },
   methods: {

@@ -11,7 +11,8 @@
       type="password"
       label="密码"
       v-model="password"
-      :error="passwordError">
+      :error="passwordError"
+      :messages="passwordMessages">
     </login-input>
     <main-button @confirm="onConfirm">登录</main-button>
   </div>
@@ -39,7 +40,8 @@ export default {
       email: '',
       password: '',
       emailError: false,
-      passwordError: false
+      passwordError: false,
+      passwordMessages: []
     }
   },
   methods: {
@@ -58,8 +60,7 @@ export default {
             this.$router.replace('/my')
           })
           .catch(() => {
-            this.emailError = true
-            this.passwordError = true
+            this.passwordMessages = ['邮箱或密码错误']
           })
       }
     },
