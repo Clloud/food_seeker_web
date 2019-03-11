@@ -1,5 +1,9 @@
 <template>
-  <block title="点评" button="查看更多点评" v-if="reviews.length">
+  <block title="点评"
+    button="查看更多点评"
+    v-if="reviews.length"
+    @more="$emit('more')"
+    :showMore="showMore">
     <div class="reviews">
       <review v-for="review in reviews"
         :key="review.id"
@@ -19,6 +23,12 @@ export default {
   components: {
     Block,
     Review
+  },
+  props: {
+    showMore: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     ...mapState(['reviews'])

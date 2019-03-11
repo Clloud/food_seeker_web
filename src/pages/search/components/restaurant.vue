@@ -1,5 +1,9 @@
 <template>
-  <block title="食堂窗口" button="查看更多窗口" v-if="restaurants.length">
+  <block title="食堂窗口"
+    button="查看更多窗口"
+    v-if="restaurants.length"
+    @more="$emit('more')"
+    :showMore="showMore">
     <div class="restaurants">
       <div class="restaurant"
         v-for="restaurant in restaurants"
@@ -37,6 +41,12 @@ export default {
   name: 'RestaurantBlock',
   components: {
     Block
+  },
+  props: {
+    showMore: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     ...mapState(['restaurants'])

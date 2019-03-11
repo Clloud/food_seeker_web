@@ -4,7 +4,7 @@
     <div class="content">
       <slot></slot>
     </div>
-    <div class="button">{{ button }}</div>
+    <div class="button" @click="onClick" v-show="showMore">{{ button }}</div>
   </div>
 </template>
 
@@ -16,6 +16,16 @@ export default {
     button: {
       type: String,
       default: '查看全部'
+    },
+    showMore: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    onClick () {
+      this.$emit('more')
+      this.show = false
     }
   }
 }
