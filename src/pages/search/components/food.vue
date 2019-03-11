@@ -1,6 +1,20 @@
 <template>
-  <block title="菜品" button="查看全部菜品">
+  <block title="菜品" button="查看更多菜品" v-if="foods.length">
     <div class="foods">
+      <div class="food"
+        v-for="food in foods"
+        :key="food.id"
+        @click="toRestaurant(food.restaurant.id)">
+        <div class="left-part">
+          <div class="image-container">
+            <img :src="imageUrl(food.images)" class="image" />
+          </div>
+        </div>
+        <div class="right-part">
+          <div class="title">{{ food.name }}</div>
+          <div class="price">￥{{ food.price }}</div>
+        </div>
+      </div>
     </div>
   </block>
 </template>
@@ -14,14 +28,19 @@ export default {
   components: {
     Block
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     ...mapState(['foods'])
   },
   methods: {
+    rating (grade) {
+      return Math.round(grade)
+    },
+    imageUrl (images) {
+      return images.length ? images[0].url : ''
+    },
+    toRestaurant (id) {
+      this.$router.push('/restaurant/' + id)
+    }
   },
   mounted () {
   }
@@ -29,4 +48,38 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+@import '~common/style/variable'
+@import '~common/style/mixin'
+
+.foods
+  display: flex
+  flex-direction: column
+  .food
+    display: flex
+    margin-bottom: 24px
+    .left-part
+      margin-right: 18px
+      .image-container
+        display: flex
+        align-items: center
+        height: 96px
+        width: 96px
+        background: $color-image-background
+        border-radius: 3.5px
+        overflow: hidden
+        .image
+          width: 100%
+    .right-part
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      padding: 0 0 3px
+      .title
+        font-size: $font-size-large
+        line-height: 24px
+        ellipsis(2)
+      .price
+        font-family: 'PingFang SC'
+        font-size: $font-size-medium-x
+        font-weight: bold
 </style>

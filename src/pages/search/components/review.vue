@@ -1,5 +1,5 @@
 <template>
-  <block title="点评" button="查看全部点评">
+  <block title="点评" button="查看更多点评" v-if="reviews.length">
     <div class="reviews">
       <review v-for="review in reviews"
         :key="review.id"

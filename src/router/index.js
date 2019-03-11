@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TabBar from 'components/tab-bar/tab-bar'
-
 import Search from 'pages/search/search'
 import Restaurant from 'pages/restaurant/restaurant'
 import My from 'pages/my/my'
@@ -10,8 +9,9 @@ import RegisterConfirm from 'pages/register/register-confirm'
 import Login from 'pages/login/login'
 import Setting from 'pages/setting/setting'
 import AddReview from 'pages/add-review/add-review'
-import Review from 'pages/review/review'
 import MyReview from 'pages/my-review/my-review'
+import Reviews from 'pages/reviews/reviews'
+import Review from 'pages/review/review'
 
 Vue.use(Router)
 
@@ -52,8 +52,8 @@ export default new Router({
       component: Restaurant
     },
     {
-      path: '/restaurant/:id/review',
-      component: Review
+      path: '/restaurant/:id/reviews',
+      component: Reviews
     },
     {
       path: '/add-review',
@@ -64,8 +64,12 @@ export default new Router({
       component: Setting
     },
     {
-      path: '/my/review',
+      path: '/my/reviews',
       component: MyReview
+    },
+    {
+      path: '/review/:id',
+      component: Review
     }
   ]
 })

@@ -36,14 +36,13 @@ export default {
 .container
   display: flex
   flex-direction: column
-  align-items: center
-  width: 100%
+  width: 85%
   .button
     background: $color-theme
     color: #fff
     font-size: $font-size-medium-x
     height: 45px
-    width: 85%
+    width: 100%
     max-width: 318.75px
     border-radius: 3.5px
     display: flex

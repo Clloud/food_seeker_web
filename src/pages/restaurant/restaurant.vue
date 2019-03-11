@@ -7,12 +7,9 @@
       <item title="介绍" button="查看详情">
         <div class="content">{{ restaurant.introduction }}</div>
       </item>
-      <item title="点评" button="查看更多点评" @click="moreReview">
-        <review v-for="review in reviews"
-          :key="review.id"
-          :review="review">
-        </review>
-      </item>
+      <restaurant-reviews
+        :restaurant="restaurant"
+        :id="$route.params.id"></restaurant-reviews>
       <item title="位置">{{ restaurant.location }}</item>
     </div>
   </div>
@@ -21,8 +18,8 @@
 <script type="text/ecmascript-6">
 import RestaurantSwiper from './components/swiper'
 import RestaurantHeader from './components/header'
+import RestaurantReviews from './components/reviews'
 import Item from './components/item'
-import Review from 'components/review/review'
 import NavBar from 'components/nav-bar/nav-bar'
 
 export default {
@@ -30,8 +27,8 @@ export default {
   components: {
     RestaurantSwiper,
     RestaurantHeader,
+    RestaurantReviews,
     Item,
-    Review,
     NavBar
   },
   data () {
@@ -41,9 +38,7 @@ export default {
         introduction: '',
         location: '',
         images: []
-      },
-      reviews: [],
-      reviewCount: 3
+      }
     }
   },
   methods: {
@@ -52,34 +47,18 @@ export default {
         .then((data) => {
           this.restaurant = data
         })
-    },
-    getReviews (id) {
-      this.axios.get(`/restaurant/${id}/reviews?per_page=${this.reviewCount}`)
-        .then((data) => {
-          this.reviews = data
-        })
-    },
-    moreReview () {
-      this.$router.push(`/restaurant/${this.$route.params.id}/review`)
     }
   },
   mounted () {
     let id = this.$route.params.id
     this.getRestaurant(id)
-    this.getReviews(id)
   }
 }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-@import '~common/style/mixin'
-
 .wrapper
   display: flex
   flex-direction: column
   align-items: center
-  .content
-    font-size: $font-size-medium-x
-    line-height: 20px
-    ellipsis(3)
 </style>

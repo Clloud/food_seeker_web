@@ -2,7 +2,8 @@
   <div class="reviews">
       <div class="review"
         v-for="review in reviews"
-        :key="review.id">
+        :key="review.id"
+        @click="$router.push(`/review/${review.id}`)">
         <div class="info">
           <div class="left-part">
             <div class="image-wrapper">
@@ -11,11 +12,18 @@
                 v-if="review.user.avatar_url"/>
             </div>
           </div>
-          <div>
-            <div class="right-part">
+          <div class="right-part">
+            <div class="right-top">
               <div class="nickname">{{ review.user.nickname }}</div>
-              <div class="time" v-time="review.create_time"></div>
+              <div class="rating">
+                <span class="stars">
+                  <span class="iconfont icon-star"
+                    v-for="i in review.grade"
+                    :key="i">&#xe6b0;</span>
+                </span>
+              </div>
             </div>
+            <div class="time" v-time="review.create_time"></div>
           </div>
         </div>
         <div class="content">{{ review.content }}</div>
@@ -62,12 +70,27 @@ export default {
             height: 45px
             border: none
       .right-part
+        flex: 1
         margin: 2px 0  0 12px
         display: flex
         flex-direction: column
-        .nickname
-          font-weight: bold
+        .right-top
+          flex: 1
+          display: flex
+          align-items: center
+          justify-content: space-between
           margin-bottom: 8px
+          .nickname
+            font-weight: bold
+          .rating
+            display: flex
+            align-items: center
+            .stars
+              display: flex
+              margin-right: 6px
+              .icon-star
+                color: $color-theme
+                font-size: $font-size-small
         .time
           font-size: $font-size-small
           font-family: 'PingFang SC'

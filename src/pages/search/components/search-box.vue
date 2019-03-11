@@ -43,7 +43,7 @@ export default {
   name: 'SearchBox',
   data () {
     return {
-      keyword: 'r',
+      keyword: '',
       fullScreen: false,
       recommend: '搜索食堂试试',
       placeholder: '想吃什么？',
@@ -186,7 +186,9 @@ export default {
           height: 60px
           border-bottom: 1px solid $color-border
           .text
+            flex: 1
             ellipsis()
+            extend-click()
           .icon-delete
             margin-left: 16px
             color: #a2a7a8

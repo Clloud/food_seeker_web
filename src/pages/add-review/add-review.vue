@@ -67,7 +67,7 @@ export default {
         })
           .then((data) => {
             this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, null)
-            this.$router.replace('/my/review')
+            this.$router.replace('/my/reviews')
           })
           .catch((error) => {
             console.log(error)

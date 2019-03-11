@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="item" @click="$router.push('/my/review')">
+    <div class="item" @click="$router.push('/my/reviews')">
       <div class="iconfont icon icon-review">&#xebdf;</div>
       <div class="text">我的点评</div>
     </div>
