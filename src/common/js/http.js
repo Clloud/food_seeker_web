@@ -25,6 +25,10 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   return response.data
 }, function (error) {
+  // Internal error
+  if (error.response && error.response.data.status === 500) {
+    console.log(error.response.data)
+  }
   if (error.response && error.response.status === 401) {
     // clear token
     store.commit(types.SET_TOKEN, '')

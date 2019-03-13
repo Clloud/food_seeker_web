@@ -45,7 +45,7 @@ export default {
     return {
       keyword: '',
       fullScreen: false,
-      recommend: '搜索食堂试试',
+      recommend: '搜索牛肉粉试试',
       placeholder: '想吃什么？',
       searchHistory: this.$store.state.searchHistory
     }

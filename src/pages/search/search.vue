@@ -84,17 +84,35 @@ export default {
         .then((data) => {
           this.$store.commit(types.SET_RESTAURANTS, data)
         })
+        .catch(() => {
+          this.axios.get(`/feed/restaurants?per_page=${count}`)
+            .then((data) => {
+              this.$store.commit(types.SET_RESTAURANTS, data)
+            })
+        })
     },
     recommendFoods (count = this.defaultCount) {
       this.axios.get(`/feed/foods?per_page=${count}`)
         .then((data) => {
           this.$store.commit(types.SET_FOODS, data)
         })
+        .catch(() => {
+          this.axios.get(`/feed/foods?per_page=${count}`)
+            .then((data) => {
+              this.$store.commit(types.SET_FOODS, data)
+            })
+        })
     },
     recommendReviews (count = this.defaultCount) {
       this.axios.get(`/feed/reviews?per_page=${count}`)
         .then((data) => {
           this.$store.commit(types.SET_REVIEWS, data)
+        })
+        .catch(() => {
+          this.axios.get(`/feed/reviews?per_page=${count}`)
+            .then((data) => {
+              this.$store.commit(types.SET_REVIEWS, data)
+            })
         })
     }
   },
