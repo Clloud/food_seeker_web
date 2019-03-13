@@ -1,0 +1,93 @@
+<template>
+  <div class="page">
+    <nav-bar title="菜品"></nav-bar>
+    <div class="foods">
+      <div class="food"
+        v-for="food in foods"
+        :key="food.id">
+        <div class="left-part">
+          <div class="image-container">
+            <img :src="imageUrl(food.images)" class="image" />
+          </div>
+        </div>
+        <div class="right-part">
+          <div class="title">{{ food.name }}</div>
+          <div class="price">￥{{ food.price }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script type="text/ecmascript-6">
+import NavBar from 'components/nav-bar/nav-bar'
+
+export default {
+  name: 'Foods',
+  components: {
+    NavBar
+  },
+  data () {
+    return {
+      foods: []
+    }
+  },
+  methods: {
+    getFoods (id) {
+      this.axios.get(`/restaurant/${id}/foods?per_page=30`)
+        .then((data) => {
+          this.foods = data
+        })
+    },
+    imageUrl (images) {
+      return images.length ? images[0].url : ''
+    }
+  },
+  mounted () {
+    console.log(this.$route.params.id)
+    this.getFoods(this.$route.params.id)
+  }
+}
+</script>
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+@import '~common/style/variable'
+@import '~common/style/mixin'
+
+.page
+  display: flex
+  flex-direction: column
+  align-items: center
+.foods
+  display: flex
+  flex-direction: column
+  width: 85%
+  .food
+    display: flex
+    margin-bottom: 24px
+    .left-part
+      margin-right: 18px
+      .image-container
+        display: flex
+        align-items: center
+        height: 96px
+        width: 96px
+        background: $color-image-background
+        border-radius: 3.5px
+        overflow: hidden
+        .image
+          width: 100%
+    .right-part
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      padding: 0 0 3px
+      .title
+        font-size: $font-size-large
+        line-height: 24px
+        ellipsis(2)
+      .price
+        font-family: 'PingFang SC'
+        font-size: $font-size-medium-x
+        font-weight: bold
+</style>

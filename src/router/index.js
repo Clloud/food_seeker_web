@@ -12,6 +12,7 @@ import AddReview from 'pages/add-review/add-review'
 import MyReview from 'pages/my-review/my-review'
 import Reviews from 'pages/reviews/reviews'
 import Review from 'pages/review/review'
+import Foods from 'pages/foods/foods'
 
 Vue.use(Router)
 
@@ -54,6 +55,10 @@ export default new Router({
     {
       path: '/restaurant/:id/reviews',
       component: Reviews
+    },
+    {
+      path: '/restaurant/:id/foods',
+      component: Foods
     },
     {
       path: '/add-review',

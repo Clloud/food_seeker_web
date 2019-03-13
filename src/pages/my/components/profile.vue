@@ -44,8 +44,8 @@ export default {
     height: 80px
     border-radius: 80px
     background: $color-image-background
-    // background: red
-    over-flow: hidden
+    overflow: hidden
+    border: 1px solid $color-border
     .image
       width: 80px
       height: 80px

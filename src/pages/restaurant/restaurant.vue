@@ -7,6 +7,9 @@
       <item title="介绍" button="查看详情">
         <div class="content">{{ restaurant.introduction }}</div>
       </item>
+      <restaurant-foods
+        :restaurant="restaurant"
+        :id="$route.params.id"></restaurant-foods>
       <restaurant-reviews
         :restaurant="restaurant"
         :id="$route.params.id"></restaurant-reviews>
@@ -19,6 +22,7 @@
 import RestaurantSwiper from './components/swiper'
 import RestaurantHeader from './components/header'
 import RestaurantReviews from './components/reviews'
+import RestaurantFoods from './components/foods'
 import Item from './components/item'
 import NavBar from 'components/nav-bar/nav-bar'
 
@@ -28,6 +32,7 @@ export default {
     RestaurantSwiper,
     RestaurantHeader,
     RestaurantReviews,
+    RestaurantFoods,
     Item,
     NavBar
   },
