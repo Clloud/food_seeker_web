@@ -17,14 +17,27 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       reviews: []
     }
   },
+  methods: {
+    getReviews (id) {
+      this.axios.get(`/restaurant/${id}/reviews`)
+        .then((data) => {
+          this.reviews = data
+        })
+    }
+  },
   mounted () {
-    this.axios.get(`/restaurant/${this.$route.params.id}/reviews`)
-      .then((data) => {
-        this.reviews = data
-      })
+    this.getReviews(this.$route.params.id)
+  },
+  activated () {
+    if (this.$route.params.id !== this.lastId) {
+      let id = this.$route.params.id
+      this.lastId = id
+      this.getReviews(id)
+    }
   }
 }
 </script>

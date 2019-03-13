@@ -91,6 +91,7 @@ export default {
       padding: 0 0 3px
       .title
         font-size: $font-size-large
+        font-weight: bold
         line-height: 24px
         ellipsis(2)
       .price

@@ -1,20 +1,18 @@
 <template>
-  <div>
+  <div class="container">
     <nav-bar></nav-bar>
     <restaurant-swiper :images="restaurant.images"></restaurant-swiper>
-    <div class="wrapper">
-      <restaurant-header :name="restaurant.name"></restaurant-header>
-      <item title="介绍" button="查看详情">
-        <div class="content">{{ restaurant.introduction }}</div>
-      </item>
-      <restaurant-foods
-        :restaurant="restaurant"
-        :id="$route.params.id"></restaurant-foods>
-      <restaurant-reviews
-        :restaurant="restaurant"
-        :id="$route.params.id"></restaurant-reviews>
-      <item title="位置">{{ restaurant.location }}</item>
-    </div>
+    <restaurant-header :name="restaurant.name"></restaurant-header>
+    <item title="介绍">
+      <div class="content">{{ restaurant.introduction }}</div>
+    </item>
+    <restaurant-foods
+      :restaurant="restaurant"
+      :id="$route.params.id"></restaurant-foods>
+    <restaurant-reviews
+      :restaurant="restaurant"
+      :id="$route.params.id"></restaurant-reviews>
+    <item title="位置">{{ restaurant.location }}</item>
   </div>
 </template>
 
@@ -70,7 +68,7 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-.wrapper
+.container
   display: flex
   flex-direction: column
   align-items: center

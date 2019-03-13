@@ -18,6 +18,7 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       review: null
     }
   },
@@ -32,6 +33,13 @@ export default {
   },
   mounted () {
     this.getReview(this.$route.params.id)
+  },
+  activated () {
+    if (this.$route.params.id !== this.lastId) {
+      let id = this.$route.params.id
+      this.lastId = id
+      this.getReview(id)
+    }
   }
 }
 </script>
