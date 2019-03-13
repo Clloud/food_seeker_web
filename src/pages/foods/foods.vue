@@ -29,6 +29,7 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       foods: []
     }
   },
@@ -44,8 +45,14 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$route.params.id)
     this.getFoods(this.$route.params.id)
+  },
+  activated () {
+    if (this.$route.params.id !== this.lastId) {
+      let id = this.$route.params.id
+      this.lastId = id
+      this.getFoods(id)
+    }
   }
 }
 </script>

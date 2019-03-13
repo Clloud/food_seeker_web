@@ -38,6 +38,7 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       restaurant: {
         name: '',
         introduction: '',
@@ -57,6 +58,13 @@ export default {
   mounted () {
     let id = this.$route.params.id
     this.getRestaurant(id)
+  },
+  activated () {
+    if (this.$route.params.id !== this.lastId) {
+      let id = this.$route.params.id
+      this.lastId = id
+      this.getRestaurant(id)
+    }
   }
 }
 </script>

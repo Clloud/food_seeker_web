@@ -32,6 +32,7 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       foods: []
     }
   },
@@ -51,6 +52,12 @@ export default {
   },
   mounted () {
     this.getFoods(this.id)
+  },
+  activated () {
+    if (this.id !== this.lastId) {
+      this.lastId = this.id
+      this.getFoods(this.id)
+    }
   }
 }
 </script>

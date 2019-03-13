@@ -36,6 +36,7 @@ export default {
   },
   data () {
     return {
+      lastId: 0,
       reviews: []
     }
   },
@@ -52,6 +53,12 @@ export default {
   },
   mounted () {
     this.getReviews(this.id)
+  },
+  activated () {
+    if (this.id !== this.lastId) {
+      this.lastId = this.id
+      this.getReviews(this.id)
+    }
   }
 }
 </script>
