@@ -71,13 +71,13 @@ export default {
     .left-part
       margin-right: 12px
       .image-wrapper
-        width: 50px
+        width: 75px
         height: 50px
         border-radius: 3px
         background: #eee
         overflow: hidden
         .image
-          width: 50px
+          width: 75px
           height: 50px
     .right-part
       display: flex

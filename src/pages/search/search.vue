@@ -15,6 +15,8 @@ import RestaurantBlock from './components/restaurant'
 import ReviewBlock from './components/review'
 import FoodBlock from './components/food'
 import * as types from 'store/mutation-types'
+import Search from 'models/search'
+import Feed from 'models/feed'
 
 export default {
   name: 'Search',
@@ -62,58 +64,34 @@ export default {
       this.$store.commit(types.SET_REVIEWS, [])
     },
     getRestaurants (count = this.defaultCount) {
-      this.axios.get(`/search/restaurants?per_page=${count}&q=${this.keyword}`)
-        .then((data) => {
-          this.$store.commit(types.SET_RESTAURANTS, data.items)
-        })
+      Search.searchRestaurants(this.keyword, count).then((data) => {
+        this.$store.commit(types.SET_RESTAURANTS, data.items)
+      })
     },
     getFoods (count = this.defaultCount) {
-      this.axios.get(`/search/foods?per_page=${count}&q=${this.keyword}`)
-        .then((data) => {
-          this.$store.commit(types.SET_FOODS, data.items)
-        })
+      Search.searchFoods(this.keyword, count).then((data) => {
+        this.$store.commit(types.SET_FOODS, data.items)
+      })
     },
     getReviews (count = this.defaultCount) {
-      this.axios.get(`/search/reviews?per_page=${count}&q=${this.keyword}`)
-        .then((data) => {
-          this.$store.commit(types.SET_REVIEWS, data.items)
-        })
+      Search.searchReviews(this.keyword, count).then((data) => {
+        this.$store.commit(types.SET_REVIEWS, data.items)
+      })
     },
     recommendRestaurants (count = this.defaultCount) {
-      this.axios.get(`/feed/restaurants?per_page=${count}`)
-        .then((data) => {
-          this.$store.commit(types.SET_RESTAURANTS, data)
-        })
-        .catch(() => {
-          this.axios.get(`/feed/restaurants?per_page=${count}`)
-            .then((data) => {
-              this.$store.commit(types.SET_RESTAURANTS, data)
-            })
-        })
+      Feed.feedRestaurants(count).then((data) => {
+        this.$store.commit(types.SET_RESTAURANTS, data)
+      })
     },
     recommendFoods (count = this.defaultCount) {
-      this.axios.get(`/feed/foods?per_page=${count}`)
-        .then((data) => {
-          this.$store.commit(types.SET_FOODS, data)
-        })
-        .catch(() => {
-          this.axios.get(`/feed/foods?per_page=${count}`)
-            .then((data) => {
-              this.$store.commit(types.SET_FOODS, data)
-            })
-        })
+      Feed.feedFoods(count).then((data) => {
+        this.$store.commit(types.SET_FOODS, data)
+      })
     },
     recommendReviews (count = this.defaultCount) {
-      this.axios.get(`/feed/reviews?per_page=${count}`)
-        .then((data) => {
-          this.$store.commit(types.SET_REVIEWS, data)
-        })
-        .catch(() => {
-          this.axios.get(`/feed/reviews?per_page=${count}`)
-            .then((data) => {
-              this.$store.commit(types.SET_REVIEWS, data)
-            })
-        })
+      Feed.feedReviews(count).then((data) => {
+        this.$store.commit(types.SET_REVIEWS, data)
+      })
     }
   },
   mounted () {

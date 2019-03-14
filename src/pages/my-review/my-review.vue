@@ -9,6 +9,8 @@
 import NavBar from 'components/nav-bar/nav-bar'
 import ReviewList from 'components/review-list/review-list'
 import * as types from 'store/mutation-types'
+import Review from 'models/review'
+import User from 'models/user'
 
 export default {
   name: 'MyReview',
@@ -23,10 +25,10 @@ export default {
   },
   methods: {
     // 根据token获取用户uid
-    getUid () {
+    _getUid () {
       if (this.$store.state.token) {
         return new Promise((resolve, reject) => {
-          this.axios.post('/token/secret', {
+          User.getTokenInfo({
             token: this.$store.state.token
           })
             .then((data) => {
@@ -36,21 +38,23 @@ export default {
         })
       }
     },
-    getReviews (uid) {
-      this.axios.get(`/user/${uid}/reviews`)
-        .then((data) => {
-          this.reviews = data
-        })
+    _getReviews (uid) {
+      Review.getReviewsByUid(uid).then((data) => {
+        this.reviews = data
+      })
     }
   },
   mounted () {
     if (!this.$store.state.uid) {
-      this.getUid().then((id) => {
-        this.getReviews(id)
+      this._getUid().then((id) => {
+        this._getReviews(id)
       })
     } else {
-      this.getReviews(this.$store.state.uid)
+      this._getReviews(this.$store.state.uid)
     }
+  },
+  activated () {
+    this._getReviews(this.$store.state.uid)
   }
 }
 </script>

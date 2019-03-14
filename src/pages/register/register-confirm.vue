@@ -25,7 +25,7 @@ import NavBar from 'components/nav-bar/nav-bar'
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
-// import User from 'models/user'
+import User from 'models/user'
 
 export default {
   name: 'RegisterConfirm',
@@ -49,16 +49,11 @@ export default {
   },
   methods: {
     onConfirm () {
+      // TODO 重构
       if (!this.nicknameError && !this.passwordError &&
         this.nickname && this.password) {
         const Email = 100
-        // User.register(
-        //   this.$store.state.email,
-        //   this.password,
-        //   Email,
-        //   this.nickname
-        // )
-        this.axios.post('/user', {
+        User.register({
           account: this.$store.state.email,
           secret: this.password,
           type: Email,

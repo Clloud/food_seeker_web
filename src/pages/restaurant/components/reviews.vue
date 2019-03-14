@@ -23,6 +23,7 @@
 <script type="text/ecmascript-6">
 import Review from 'components/review/review'
 import Item from './item'
+import ReviewModel from 'models/review'
 
 export default {
   name: 'RestaurantReviews',
@@ -44,20 +45,20 @@ export default {
     moreReview () {
       this.$router.push(`/restaurant/${this.$route.params.id}/reviews`)
     },
-    getReviews (id) {
-      this.axios.get(`/restaurant/${id}/reviews?per_page=3`)
-        .then((data) => {
-          this.reviews = data
-        })
+    _getReviews (id) {
+      let count = 3
+      ReviewModel.getReviews(id, count).then((data) => {
+        this.reviews = data
+      })
     }
   },
   mounted () {
-    this.getReviews(this.id)
+    this._getReviews(this.id)
   },
   activated () {
     if (this.id !== this.lastId) {
       this.lastId = this.id
-      this.getReviews(this.id)
+      this._getReviews(this.id)
     }
   }
 }

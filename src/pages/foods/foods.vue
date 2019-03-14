@@ -21,6 +21,7 @@
 
 <script type="text/ecmascript-6">
 import NavBar from 'components/nav-bar/nav-bar'
+import Food from 'models/food'
 
 export default {
   name: 'Foods',
@@ -34,8 +35,8 @@ export default {
     }
   },
   methods: {
-    getFoods (id) {
-      this.axios.get(`/restaurant/${id}/foods?per_page=30`)
+    _getFoods (id) {
+      Food.getFoods(id)
         .then((data) => {
           this.foods = data
         })
@@ -45,13 +46,13 @@ export default {
     }
   },
   mounted () {
-    this.getFoods(this.$route.params.id)
+    this._getFoods(this.$route.params.id)
   },
   activated () {
     if (this.$route.params.id !== this.lastId) {
       let id = this.$route.params.id
       this.lastId = id
-      this.getFoods(id)
+      this._getFoods(id)
     }
   }
 }

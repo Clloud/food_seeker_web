@@ -20,6 +20,7 @@
 
 <script type="text/ecmascript-6">
 import Item from './item'
+import Food from 'models/food'
 
 export default {
   name: 'RestaurantFoods',
@@ -40,23 +41,23 @@ export default {
     moreFood () {
       this.$router.push(`/restaurant/${this.$route.params.id}/foods`)
     },
-    getFoods (id) {
-      this.axios.get(`/restaurant/${id}/foods?per_page=3`)
-        .then((data) => {
-          this.foods = data
-        })
+    _getFoods (id) {
+      let count = 3
+      Food.getFoods(id, count).then((data) => {
+        this.foods = data
+      })
     },
     imageUrl (images) {
       return images.length ? images[0].url : ''
     }
   },
   mounted () {
-    this.getFoods(this.id)
+    this._getFoods(this.id)
   },
   activated () {
     if (this.id !== this.lastId) {
       this.lastId = this.id
-      this.getFoods(this.id)
+      this._getFoods(this.id)
     }
   }
 }

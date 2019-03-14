@@ -20,6 +20,7 @@ import ReviewContent from './components/review-content'
 import Merchant from './components/merchant'
 import AssosiateRestaurant from './components/assosiate-restaurant'
 import * as types from 'store/mutation-types'
+import Review from 'models/review'
 
 export default {
   name: 'AddReview',
@@ -55,11 +56,7 @@ export default {
       let content = this.$refs.content.value
       let restaurant = this.restaurant
       if (tasteRank /* && comfortRank */ && content && restaurant) {
-        console.log(tasteRank)
-        // console.log(comfortRank)
-        console.log(content)
-        console.log(restaurant.id)
-        this.axios.post('review', {
+        Review.addReview({
           restaurant_id: restaurant.id,
           content: content,
           grade: tasteRank,

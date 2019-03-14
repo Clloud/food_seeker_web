@@ -20,6 +20,7 @@ import NavBar from 'components/nav-bar/nav-bar'
 import MainButton from 'components/main-button/main-button'
 import RegisterHeader from 'components/header/header'
 import RegisterInput from 'components/input/input'
+import Search from 'models/search'
 
 export default {
   name: 'Register',
@@ -40,7 +41,7 @@ export default {
   methods: {
     onConfirm () {
       if (!this.emailError && this.email) {
-        this.axios.get('/search/users?q=email:' + this.email)
+        Search.searchUsers(this.email)
           .then((data) => {
             if (data.total_count === 0) {
               this.$store.commit(types.SET_EMAIL, this.email)

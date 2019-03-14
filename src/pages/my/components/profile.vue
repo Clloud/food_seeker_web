@@ -13,6 +13,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+import User from 'models/user'
+
 export default {
   name: 'Profile',
   data () {
@@ -24,10 +26,9 @@ export default {
     }
   },
   mounted () {
-    this.axios.get('/user')
-      .then((data) => {
-        this.user = data
-      })
+    User.getUser().then((data) => {
+      this.user = data
+    })
   }
 }
 </script>
@@ -60,5 +61,5 @@ export default {
     .edit
       margin-top: 12px
       color: $color-theme
-      // font-size: $font-size-mediu
+      // font-size: $font-size-medium
 </style>

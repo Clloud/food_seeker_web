@@ -38,6 +38,7 @@
 
 <script type="text/ecmascript-6">
 import * as types from 'store/mutation-types'
+import Search from 'models/search'
 
 export default {
   name: 'AssosiateRestaurant',
@@ -65,10 +66,9 @@ export default {
     },
     onSearch () {
       if (this.keyword) {
-        this.axios.get('/search/restaurants?q=' + this.keyword)
-          .then((data) => {
-            this.restaurants = data.items
-          })
+        Search.searchRestaurants(this.keyword).then((data) => {
+          this.restaurants = data.items
+        })
       }
     },
     onSelect (index) {
@@ -144,13 +144,13 @@ export default {
       .left-part
         margin-right: 18px
         .image-wrapper
-          width: 50px
+          width: 75px
           height: 50px
           border-radius: 3px
           background: #eee
           overflow: hidden
           .image
-            width: 50px
+            width: 75px
             height: 50px
       .right-part
         display: flex

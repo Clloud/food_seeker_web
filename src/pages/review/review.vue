@@ -9,6 +9,7 @@
 <script type="text/ecmascript-6">
 import NavBar from 'components/nav-bar/nav-bar'
 import User from './components/user'
+import Review from 'models/review'
 
 export default {
   name: 'Review',
@@ -23,22 +24,21 @@ export default {
     }
   },
   methods: {
-    getReview (id) {
-      this.axios.get(`/review/${id}`)
-        .then((data) => {
-          this.review = data
-          console.log(data)
-        })
+    _getReview (id) {
+      Review.getReview(id).then((data) => {
+        this.review = data
+        console.log(data)
+      })
     }
   },
   mounted () {
-    this.getReview(this.$route.params.id)
+    this._getReview(this.$route.params.id)
   },
   activated () {
     if (this.$route.params.id !== this.lastId) {
       let id = this.$route.params.id
       this.lastId = id
-      this.getReview(id)
+      this._getReview(id)
     }
   }
 }

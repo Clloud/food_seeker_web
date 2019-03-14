@@ -23,6 +23,7 @@ import RestaurantReviews from './components/reviews'
 import RestaurantFoods from './components/foods'
 import Item from './components/item'
 import NavBar from 'components/nav-bar/nav-bar'
+import Restaurant from 'models/restaurant'
 
 export default {
   name: 'Restaurant',
@@ -46,22 +47,21 @@ export default {
     }
   },
   methods: {
-    getRestaurant (id) {
-      this.axios.get('/restaurant/' + id)
-        .then((data) => {
-          this.restaurant = data
-        })
+    _getRestaurant (id) {
+      Restaurant.getRestaurant(id).then((data) => {
+        this.restaurant = data
+      })
     }
   },
   mounted () {
     let id = this.$route.params.id
-    this.getRestaurant(id)
+    this._getRestaurant(id)
   },
   activated () {
     if (this.$route.params.id !== this.lastId) {
       let id = this.$route.params.id
       this.lastId = id
-      this.getRestaurant(id)
+      this._getRestaurant(id)
     }
   }
 }
