@@ -105,7 +105,6 @@ export default {
   display: flex
   justify-content: center
   position: fixed
-  background: #fff
   .box
     width: 85%
     display: flex
@@ -118,6 +117,7 @@ export default {
     color: #a6a6a6
     box-sizing: border-box
     padding: 0 16px
+    background: rgba(255, 255, 255, 0.5)
     .icon-search
       font-size: $font-size-large-x
       margin: 0 18px 0 0

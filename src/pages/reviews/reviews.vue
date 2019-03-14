@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <nav-bar title="点评"></nav-bar>
-    <review-list :reviews="reviews"></review-list>
+  <div class="page">
+    <nav-bar title="点评" class="nav"></nav-bar>
+    <review-list :reviews="reviews" class="reviews"></review-list>
   </div>
 </template>
 
@@ -43,8 +43,12 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-.container
+.page
   display: flex
   flex-direction: column
   align-items: center
+  .nav
+    position: fixed
+  .reviews
+    margin-top: 60px
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <block title="菜品"
-  button="查看更多菜品"
+  <block title="美食"
+  button="查看更多美食"
   v-if="foods.length"
   @more="$emit('more')"
   :showMore="showMore">

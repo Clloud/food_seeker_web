@@ -2,6 +2,7 @@ import axios from 'axios'
 
 export default class Review {
   id = 0
+  perPage = 30
   uid = 0
   review = {}
 
@@ -20,15 +21,16 @@ export default class Review {
       })
   }
 
-  static getReviews (id, count = 30) {
+  static getReviews (id, perPage = 30) {
     this.id = id
-    return axios.get(`/restaurant/${id}/reviews?per_page=${count}`)
+    this.perPage = perPage
+    return axios.get(`/restaurant/${id}/reviews?per_page=${perPage}`)
       .then((data) => {
         return Promise.resolve(data)
       })
       .catch((error) => {
         if (error.error_code === 999) {
-          return this.getReviews(this.id)
+          return this.getReviews(this.id, this.perPage)
         } else {
           return Promise.reject(error)
         }

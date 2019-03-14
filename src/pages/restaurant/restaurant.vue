@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <nav-bar></nav-bar>
+    <restaurant-header></restaurant-header>
     <restaurant-swiper :images="restaurant.images"></restaurant-swiper>
-    <restaurant-header :name="restaurant.name"></restaurant-header>
+    <restaurant-info :name="restaurant.name"></restaurant-info>
     <item title="介绍">
       <div class="content">{{ restaurant.introduction }}</div>
     </item>
@@ -13,27 +13,32 @@
       :restaurant="restaurant"
       :id="$route.params.id"></restaurant-reviews>
     <item title="位置">{{ restaurant.location }}</item>
+    <!-- 保持底部间距 -->
+    <div class="bottom"></div>
+    <bottom-bar :restaurant="restaurant"></bottom-bar>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-import RestaurantSwiper from './components/swiper'
 import RestaurantHeader from './components/header'
+import RestaurantSwiper from './components/swiper'
+import RestaurantInfo from './components/info'
 import RestaurantReviews from './components/reviews'
 import RestaurantFoods from './components/foods'
 import Item from './components/item'
-import NavBar from 'components/nav-bar/nav-bar'
+import BottomBar from './components/bottom-bar'
 import Restaurant from 'models/restaurant'
 
 export default {
   name: 'Restaurant',
   components: {
-    RestaurantSwiper,
     RestaurantHeader,
+    RestaurantSwiper,
+    RestaurantInfo,
     RestaurantReviews,
     RestaurantFoods,
     Item,
-    NavBar
+    BottomBar
   },
   data () {
     return {
@@ -42,7 +47,8 @@ export default {
         name: '',
         introduction: '',
         location: '',
-        images: []
+        images: [],
+        grade: 0
       }
     }
   },
@@ -72,4 +78,6 @@ export default {
   display: flex
   flex-direction: column
   align-items: center
+  .bottom
+    height: 60px
 </style>

@@ -11,7 +11,7 @@
           :placeholder="placeholder">
         <div class="iconfont icon-search"
           :class="activated"
-          @click="onSearch">&#xe627;
+          @click="search">&#xe627;
         </div>
       </div>
     </div>
@@ -64,7 +64,7 @@ export default {
     onClose () {
       this.$emit('close')
     },
-    onSearch () {
+    search () {
       if (this.keyword) {
         Search.searchRestaurants(this.keyword).then((data) => {
           this.restaurants = data.items
@@ -77,6 +77,15 @@ export default {
     },
     imageUrl (images) {
       return images.length ? images[0].url : ''
+    }
+  },
+  watch: {
+    keyword () {
+      if (this.keyword) {
+        setTimeout(() => {
+          this.search()
+        }, 20)
+      }
     }
   }
 }

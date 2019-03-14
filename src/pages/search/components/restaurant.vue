@@ -1,6 +1,6 @@
 <template>
-  <block title="食堂窗口"
-    button="查看更多窗口"
+  <block title="店铺"
+    button="查看更多店铺"
     v-if="restaurants.length"
     @more="$emit('more')"
     :showMore="showMore">
@@ -17,12 +17,12 @@
         <div class="right-part">
           <div class="title">{{ restaurant.name }}</div>
           <div class="rating">
-            <span class="stars" v-if="restaurant.review_amount">
+            <span class="stars" v-if="restaurant.grade">
               <span class="iconfont icon-star"
                 v-for="i in rating(restaurant.grade)"
                 :key="i">&#xe6b0;</span>
             </span>
-            <span class="amount" v-if="restaurant.review_amount">
+            <span class="amount" v-if="restaurant.grade">
               {{ restaurant.review_amount }}
             </span>
             <span v-else class="amount">暂无评分</span>

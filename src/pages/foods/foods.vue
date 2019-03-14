@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <nav-bar title="菜品"></nav-bar>
+    <nav-bar title="菜品" class="nav"></nav-bar>
     <div class="foods">
       <div class="food"
         v-for="food in foods"
@@ -66,7 +66,10 @@ export default {
   display: flex
   flex-direction: column
   align-items: center
+  .nav
+    position: fixed
 .foods
+  margin-top: 60px
   display: flex
   flex-direction: column
   width: 85%

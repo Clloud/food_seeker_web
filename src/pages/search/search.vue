@@ -1,7 +1,9 @@
 <template>
   <div class="page">
+    <div class="search-box-holder" :style="opacityStyle"></div>
     <search-box @search="search" ref="search"></search-box>
-    <div class="results">
+    <home-swiper :show="showSwiper"></home-swiper>
+    <div class="results" :style="holder">
       <restaurant-block @more="moreRestaurants" :showMore="showMore"></restaurant-block>
       <food-block @more="moreFoods" :showMore="showMore"></food-block>
       <review-block @more="moreReviews" :showMore="showMore"></review-block>
@@ -10,6 +12,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+import HomeSwiper from './components/swiper'
 import SearchBox from './components/search-box'
 import RestaurantBlock from './components/restaurant'
 import ReviewBlock from './components/review'
@@ -24,17 +27,33 @@ export default {
     SearchBox,
     RestaurantBlock,
     FoodBlock,
-    ReviewBlock
+    ReviewBlock,
+    HomeSwiper
   },
   data () {
     return {
       keyword: '',
       defaultCount: 3,
-      showMore: true
+      showMore: true,
+      showSwiper: true,
+      opacityStyle: {
+        opacity: 0
+      }
+    }
+  },
+  computed: {
+    holder () {
+      return this.showSwiper ? '' : 'margin-top:60px'
     }
   },
   methods: {
     search (keyword) {
+      // 隐藏轮播图
+      this.showSwiper = false
+      // 滑动到页面顶部
+      window.scroll(0, 0)
+      //
+      this.showMore = true
       this.keyword = this.$refs.search.keyword
       this.getRestaurants()
       this.getFoods()
@@ -47,15 +66,15 @@ export default {
     },
     moreRestaurants () {
       this.clear()
-      this.keywords ? this.getRestaurants(30) : this.recommendRestaurants(30)
+      this.keyword ? this.getRestaurants(30) : this.recommendRestaurants(30)
     },
     moreFoods () {
       this.clear()
-      this.keywords ? this.getFoods(30) : this.recommendFoods(30)
+      this.keyword ? this.getFoods(30) : this.recommendFoods(30)
     },
     moreReviews () {
       this.clear()
-      this.keywords ? this.getReviews(30) : this.recommendReviews(30)
+      this.keyword ? this.getReviews(30) : this.recommendReviews(30)
     },
     clear () {
       this.showMore = false
@@ -92,6 +111,19 @@ export default {
       Feed.feedReviews(count).then((data) => {
         this.$store.commit(types.SET_REVIEWS, data)
       })
+    },
+    handleScroll () {
+      const top = document.documentElement.scrollTop
+      let limit = this.showSwiper ? 360 : 0
+      if (top > limit) {
+        let opacity = top / (limit + 30)
+        opacity = opacity > 1 ? 1 : opacity
+        this.opacityStyle = { opacity }
+      } else {
+        this.opacityStyle = {
+          opacity: 0
+        }
+      }
     }
   },
   mounted () {
@@ -99,6 +131,12 @@ export default {
     if (this.$refs.search.keyword === '') {
       this.recommend()
     }
+  },
+  activated () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -112,8 +150,14 @@ export default {
   width: 100%
   .results
     width: 100%
-    margin-top: 66px
+    // margin-top: 66px
     display: flex
     flex-direction: column
     align-items: center
+  .search-box-holder
+    height: 72px
+    background: #fff
+    position: fixed
+    top: 0
+    width: 100%
 </style>
