@@ -2,8 +2,8 @@
   <div class="container">
     <restaurant-header></restaurant-header>
     <restaurant-swiper :images="restaurant.images"></restaurant-swiper>
-    <restaurant-info :name="restaurant.name"></restaurant-info>
-    <item title="介绍">
+    <restaurant-info :restaurant="restaurant"></restaurant-info>
+    <item title="介绍" button="查看详情">
       <div class="content">{{ restaurant.introduction }}</div>
     </item>
     <restaurant-foods
@@ -48,7 +48,9 @@ export default {
         introduction: '',
         location: '',
         images: [],
-        grade: 0
+        grade: 0,
+        campus_name: '',
+        canteen_name: ''
       }
     }
   },
