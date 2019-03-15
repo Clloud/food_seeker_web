@@ -27,6 +27,9 @@ const mutations = {
   },
   [types.SET_FOODS] (state, foods) {
     state.foods = foods
+  },
+  [types.SET_BANNERS] (state, banners) {
+    state.banners = banners
   }
 }
 

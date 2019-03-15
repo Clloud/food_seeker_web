@@ -13,3 +13,5 @@ export const SET_RESTAURANTS = 'SET_RESTAURANTS'
 export const SET_REVIEWS = 'SET_REVIEWS'
 
 export const SET_FOODS = 'SET_FOODS'
+
+export const SET_BANNERS = 'SET_BANNERS'

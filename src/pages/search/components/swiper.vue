@@ -10,6 +10,8 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { mapState } from 'vuex'
+
 export default {
   name: 'HomeSwiper',
   props: {
@@ -23,14 +25,13 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      images: [
-        {
-          id: 1,
-          url: ''
-        }
-      ]
+      }
     }
+  },
+  computed: {
+    ...mapState({
+      images: 'banners'
+    })
   }
 }
 </script>

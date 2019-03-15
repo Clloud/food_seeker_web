@@ -63,6 +63,7 @@ export default {
       this.recommendRestaurants()
       this.recommendFoods()
       this.recommendReviews()
+      this.recommendBanners()
     },
     moreRestaurants () {
       this.clear()
@@ -110,6 +111,11 @@ export default {
     recommendReviews (count = this.defaultCount) {
       Feed.feedReviews(count).then((data) => {
         this.$store.commit(types.SET_REVIEWS, data)
+      })
+    },
+    recommendBanners () {
+      Feed.feedBanners().then((data) => {
+        this.$store.commit(types.SET_BANNERS, data)
       })
     },
     handleScroll () {

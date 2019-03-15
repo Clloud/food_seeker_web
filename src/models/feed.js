@@ -47,4 +47,18 @@ export default class Feed {
         }
       })
   }
+
+  static feedBanners () {
+    return axios.get(`/feed/banners?count=3`)
+      .then((data) => {
+        return Promise.resolve(data)
+      })
+      .catch((error) => {
+        if (error.error_code === 999) {
+          return this.feedBanners()
+        } else {
+          return Promise.reject(error)
+        }
+      })
+  }
 }

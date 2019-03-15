@@ -101,6 +101,7 @@ export default {
 @import '~common/style/mixin'
 
 .container
+  z-index: 99
   width: 100%
   display: flex
   justify-content: center
@@ -112,12 +113,12 @@ export default {
     height: 50px
     border: 1px solid $color-border
     border-radius: 5px
-    box-shadow: 0 0 5px $color-shadow
+    box-shadow: 0 0 3px $color-shadow
     margin-top: 16px
     color: #a6a6a6
     box-sizing: border-box
     padding: 0 16px
-    background: rgba(255, 255, 255, 0.5)
+    background: rgba(255, 255, 255, 0.85)
     .icon-search
       font-size: $font-size-large-x
       margin: 0 18px 0 0

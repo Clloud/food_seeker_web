@@ -14,5 +14,6 @@ export default {
   assosiateRestaurant: null,
   restaurants: [],
   reviews: [],
-  foods: []
+  foods: [],
+  banners: []
 }
