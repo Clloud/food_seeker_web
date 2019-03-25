@@ -3,6 +3,8 @@
     <nav-bar></nav-bar>
     <user :user="review.user" :time="review.create_time"></user>
     <div class="content">{{ review.content }}</div>
+    <restaurant :restaurant="review.restaurant"></restaurant>
+    <add-comment :review="review"></add-comment>
   </div>
 </template>
 
@@ -10,17 +12,30 @@
 import NavBar from 'components/nav-bar/nav-bar'
 import User from './components/user'
 import Review from 'models/review'
+import AddComment from './components/add-comment'
+import Restaurant from './components/restaurant'
 
 export default {
   name: 'Review',
   components: {
     NavBar,
-    User
+    User,
+    AddComment,
+    Restaurant
   },
   data () {
     return {
       lastId: 0,
-      review: null
+      review: {
+        restaurant: {
+          name: '',
+          location: ''
+        },
+        user: {
+          avatar_url: '',
+          nickname: ''
+        }
+      }
     }
   },
   methods: {
