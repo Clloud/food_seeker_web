@@ -13,6 +13,7 @@ import MyReview from 'pages/my-review/my-review'
 import Reviews from 'pages/reviews/reviews'
 import Review from 'pages/review/review'
 import Foods from 'pages/foods/foods'
+import Comments from 'pages/comments/comments'
 
 Vue.use(Router)
 
@@ -75,6 +76,10 @@ export default new Router({
     {
       path: '/review/:id',
       component: Review
+    },
+    {
+      path: '/review/:id/comments',
+      component: Comments
     }
   ],
   scrollBehavior (to, from, savedPosition) {

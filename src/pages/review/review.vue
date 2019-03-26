@@ -4,7 +4,7 @@
     <user :user="review.user" :time="review.create_time"></user>
     <div class="content">{{ review.content }}</div>
     <restaurant :restaurant="review.restaurant"></restaurant>
-    <add-comment :review="review"></add-comment>
+    <add-comment :reviewId="review.id"></add-comment>
   </div>
 </template>
 

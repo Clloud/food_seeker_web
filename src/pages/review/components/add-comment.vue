@@ -3,7 +3,7 @@
       <div class="avatar">
         <img :src="user.avatar_url" alt="" class="avatar">
       </div>
-      <div class>
+      <div class="input-area">
         <input type="text"
           class="input"
           placeholder="添加评论..."
@@ -22,7 +22,7 @@ import Comment from 'models/comment'
 export default {
   name: 'AddComment',
   props: {
-    review: Object
+    reviewId: 0
   },
   data () {
     return {
@@ -36,11 +36,12 @@ export default {
     onSubmit () {
       if (this.comment) {
         let comment = {
-          review_id: this.review.id,
+          review_id: this.reviewId,
           content: this.comment
         }
         Comment.addComment(comment).then((data) => {
-          this.review = ''
+          this.comment = ''
+          this.$emit('succeed')
         })
       }
     }
@@ -67,13 +68,18 @@ export default {
   height: 60px
   border-top: 1px solid $color-border
   padding: 0 7.5%
+  background: #fff
   .avatar
     width: 40px
     height: 40px
     border-radius: 40px
     background: $color-image-background
+  .input-area
+    flex-grow: 1
+    margin: 0 10px
   .input
     outline: 0
+    width: 100%
   input::-webkit-input-placeholder
     color: #c6c6c6
   .button

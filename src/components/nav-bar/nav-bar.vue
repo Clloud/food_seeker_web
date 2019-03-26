@@ -60,7 +60,7 @@ export default {
         extend-click()
       .title
         font-size: $font-size-large-x
-        margin-left: 36px
+        margin-left: 28px
     .right-part
       .button
         font-size: $font-size-large
