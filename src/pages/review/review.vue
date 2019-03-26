@@ -5,6 +5,7 @@
     <div class="content">{{ review.content }}</div>
     <restaurant :restaurant="review.restaurant"></restaurant>
     <add-comment :review="review"></add-comment>
+    <other-comment :comments="comments"></other-comment>
   </div>
 </template>
 
@@ -14,6 +15,8 @@ import User from './components/user'
 import Review from 'models/review'
 import AddComment from './components/add-comment'
 import Restaurant from './components/restaurant'
+import OtherComment from './components/other-comment'
+import Comment from 'models/comment'
 
 export default {
   name: 'Review',
@@ -21,7 +24,8 @@ export default {
     NavBar,
     User,
     AddComment,
-    Restaurant
+    Restaurant,
+    OtherComment
   },
   data () {
     return {
@@ -35,19 +39,22 @@ export default {
           avatar_url: '',
           nickname: ''
         }
-      }
+      },
+      comments: []
     }
   },
   methods: {
     _getReview (id) {
       Review.getReview(id).then((data) => {
         this.review = data
-        console.log(data)
       })
     }
   },
   mounted () {
     this._getReview(this.$route.params.id)
+    Comment.getComments(this.$route.params.id).then((data) => {
+      this.comments = data
+    })
   },
   activated () {
     if (this.$route.params.id !== this.lastId) {

@@ -7,13 +7,13 @@ export default class Comment {
   static getComments (id, perPage = 30) {
     this.id = id
     this.perPage = perPage
-    return axios.get(`/restaurant/${id}/foods?per_page=${perPage}`)
+    return axios.get(`/review/${id}/comments?per_page=${perPage}`)
       .then((data) => {
         return Promise.resolve(data)
       })
       .catch((error) => {
         if (error.error_code === 999) {
-          return this.getFoods(this.id, this.perPage)
+          return this.getComments(this.id, this.perPage)
         } else {
           return Promise.reject(error)
         }
