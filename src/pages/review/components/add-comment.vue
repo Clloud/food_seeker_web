@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <div class="avatar">
+      <div class="image">
         <img :src="user.avatar_url" alt="" class="avatar">
       </div>
       <div class="input-area">
@@ -44,12 +44,19 @@ export default {
           this.$emit('succeed')
         })
       }
+    },
+    _getUser () {
+      User.getUser().then((data) => {
+        this.user = data
+      })
     }
   },
   mounted () {
-    User.getUser().then((data) => {
-      this.user = data
-    })
+    this._getUser()
+  },
+  activated () {
+    console.log('activated')
+    this._getUser()
   }
 }
 </script>
@@ -69,11 +76,16 @@ export default {
   border-top: 1px solid $color-border
   padding: 0 7.5%
   background: #fff
-  .avatar
+  .image
     width: 40px
     height: 40px
     border-radius: 40px
     background: $color-image-background
+    overflow: hidden
+    .avatar
+      width: 40px
+      height: 40px
+      border-radius: 40px
   .input-area
     flex-grow: 1
     margin: 0 10px

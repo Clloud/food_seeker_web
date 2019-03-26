@@ -5,7 +5,7 @@
     <div class="content">{{ review.content }}</div>
     <restaurant :restaurant="review.restaurant"></restaurant>
     <add-comment :reviewId="review.id"></add-comment>
-    <other-comment :comments="comments"></other-comment>
+    <other-comment :comments="comments" :title="title" @succeed="refresh"></other-comment>
   </div>
 </template>
 
@@ -44,23 +44,30 @@ export default {
     }
   },
   methods: {
+    refresh () {
+      this._getComments(this.$route.params.id)
+    },
     _getReview (id) {
       Review.getReview(id).then((data) => {
         this.review = data
+      })
+    },
+    _getComments (id) {
+      Comment.getComments(id).then((data) => {
+        this.comments = data
       })
     }
   },
   mounted () {
     this._getReview(this.$route.params.id)
-    Comment.getComments(this.$route.params.id).then((data) => {
-      this.comments = data
-    })
+    this._getComments(this.$route.params.id)
   },
   activated () {
     if (this.$route.params.id !== this.lastId) {
       let id = this.$route.params.id
       this.lastId = id
       this._getReview(id)
+      this._getComments(id)
     }
   }
 }
