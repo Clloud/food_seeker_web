@@ -15,5 +15,6 @@ export default {
   restaurants: [],
   reviews: [],
   foods: [],
-  banners: []
+  banners: [],
+  discover: []
 }

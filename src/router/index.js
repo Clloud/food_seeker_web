@@ -14,6 +14,8 @@ import Reviews from 'pages/reviews/reviews'
 import Review from 'pages/review/review'
 import Foods from 'pages/foods/foods'
 import Comments from 'pages/comments/comments'
+import Notification from 'pages/notification/notification'
+import Discover from 'pages/discover/discover'
 
 Vue.use(Router)
 
@@ -31,9 +33,23 @@ export default new Router({
       }
     },
     {
+      path: '/discover',
+      components: {
+        'default': Discover,
+        'tab-bar': TabBar
+      }
+    },
+    {
       path: '/search',
       components: {
         'default': Search,
+        'tab-bar': TabBar
+      }
+    },
+    {
+      path: '/notification',
+      components: {
+        'default': Notification,
         'tab-bar': TabBar
       }
     },

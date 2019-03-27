@@ -27,6 +27,11 @@
           </div>
         </div>
         <div class="content">{{ review.content }}</div>
+        <div class="buttons">
+          <div class="iconfont button">&#xe600;</div>
+          <div class="iconfont button">&#xe635;</div>
+          <div class="iconfont button">&#xe936;</div>
+        </div>
       </div>
     </div>
 </template>
@@ -98,4 +103,11 @@ export default {
       font-size: $font-size-medium-x
       line-height: 22px
       ellipsis(3)
+  .buttons
+    margin-top: 18px
+    display: flex
+    .button
+      color: #868686
+      padding-right: 24px
+      font-size: 20px
 </style>

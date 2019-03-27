@@ -30,6 +30,9 @@ const mutations = {
   },
   [types.SET_BANNERS] (state, banners) {
     state.banners = banners
+  },
+  [types.SET_DISCOVER] (state, discover) {
+    state.discover = discover
   }
 }
 

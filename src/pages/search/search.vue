@@ -62,7 +62,6 @@ export default {
     recommend () {
       this.recommendRestaurants()
       this.recommendFoods()
-      this.recommendReviews()
       this.recommendBanners()
     },
     moreRestaurants () {
@@ -75,7 +74,7 @@ export default {
     },
     moreReviews () {
       this.clear()
-      this.keyword ? this.getReviews(30) : this.recommendReviews(30)
+      this.getReviews(30)
     },
     clear () {
       this.showMore = false
@@ -106,11 +105,6 @@ export default {
     recommendFoods (count = this.defaultCount) {
       Feed.feedFoods(count).then((data) => {
         this.$store.commit(types.SET_FOODS, data)
-      })
-    },
-    recommendReviews (count = this.defaultCount) {
-      Feed.feedReviews(count).then((data) => {
-        this.$store.commit(types.SET_REVIEWS, data)
       })
     },
     recommendBanners () {

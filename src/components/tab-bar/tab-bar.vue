@@ -20,8 +20,13 @@ export default {
       tabs: [
         {
           to: '/search',
-          icon: '&#xe615;'
-          // text: '搜索'
+          icon: '&#xe615;',
+          text: '搜索'
+        },
+        {
+          to: '/discover',
+          icon: '&#xe642;',
+          text: '发现'
         },
         {
           to: '/add-review',
@@ -29,9 +34,14 @@ export default {
           // text: '点评'
         },
         {
+          to: '/notification',
+          icon: '&#xe668;',
+          text: '消息'
+        },
+        {
           to: '/my',
-          icon: '&#xe62c;'
-          // text: '我的'
+          icon: '&#xe62c;',
+          text: '我的'
         }
       ]
     }
@@ -59,8 +69,8 @@ export default {
     .icon
       font-size: $font-size-large-xxx
     .text
-      font-size: $font-size-small
-      padding-top: 3px
+      font-size: $font-size-small-s
+      padding-top: 4px
   .active
     color: $color-alert
 </style>
