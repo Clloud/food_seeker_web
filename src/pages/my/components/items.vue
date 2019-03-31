@@ -1,8 +1,12 @@
 <template>
   <div class="container">
     <div class="item" @click="$router.push('/my/reviews')">
-      <div class="iconfont icon icon-review">&#xebdf;</div>
+      <div class="iconfont icon icon-review">&#xe7bc;</div>
       <div class="text">我的点评</div>
+    </div>
+    <div class="item" @click="$router.push('/my/invitations')">
+      <div class="iconfont icon icon-review">&#xebdf;</div>
+      <div class="text">我的约饭</div>
     </div>
     <div class="item" @click="$router.push('/my/setting')">
       <div class="iconfont icon">&#xe634;</div>

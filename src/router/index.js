@@ -16,6 +16,8 @@ import Foods from 'pages/foods/foods'
 import Comments from 'pages/comments/comments'
 import Notification from 'pages/notification/notification'
 import Discover from 'pages/discover/discover'
+import AddInvitation from 'pages/add-invitation/add-invitation'
+import MyInvitation from 'pages/my-invitation/my-invitation'
 
 Vue.use(Router)
 
@@ -82,12 +84,20 @@ export default new Router({
       component: AddReview
     },
     {
+      path: '/add-invitation',
+      component: AddInvitation
+    },
+    {
       path: '/my/setting',
       component: Setting
     },
     {
       path: '/my/reviews',
       component: MyReview
+    },
+    {
+      path: '/my/invitations',
+      component: MyInvitation
     },
     {
       path: '/review/:id',
