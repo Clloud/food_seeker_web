@@ -7,7 +7,8 @@
         <input type="text"
           class="input"
           placeholder="添加评论..."
-          v-model="comment">
+          v-model="comment"
+          @focus="onFocus">
       </div>
       <div class="button"
         :class="{'activated': comment}"
@@ -33,6 +34,12 @@ export default {
     }
   },
   methods: {
+    onFocus () {
+      // 检查用户是否登录
+      if (!localStorage.token) {
+        this.$router.push('/login')
+      }
+    },
     onSubmit () {
       if (this.comment) {
         let comment = {
@@ -52,11 +59,14 @@ export default {
     }
   },
   mounted () {
-    this._getUser()
+    if (localStorage.token) {
+      this._getUser()
+    }
   },
   activated () {
-    console.log('activated')
-    this._getUser()
+    if (localStorage.token) {
+      this._getUser()
+    }
   }
 }
 </script>

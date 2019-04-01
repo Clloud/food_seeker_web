@@ -5,7 +5,10 @@
     <div class="content">{{ review.content }}</div>
     <restaurant :restaurant="review.restaurant"></restaurant>
     <add-comment :reviewId="review.id"></add-comment>
-    <other-comment :comments="comments" :title="title" @succeed="refresh"></other-comment>
+    <other-comment
+      :comments="comments"
+      :title="title"
+      @succeed="refresh"></other-comment>
   </div>
 </template>
 

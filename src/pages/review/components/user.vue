@@ -19,7 +19,7 @@ export default {
   name: 'User',
   props: {
     user: Object,
-    time: Number
+    time: String
   }
 }
 </script>

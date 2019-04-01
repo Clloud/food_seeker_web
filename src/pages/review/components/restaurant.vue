@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" @click="toRestaurant">
     <div class="left-part">
       <img
         class="image"
@@ -22,6 +22,9 @@ export default {
   methods: {
     imageUrl (images) {
       return images.length ? images[0].url : ''
+    },
+    toRestaurant () {
+      this.$router.push(`/restaurant/${this.restaurant.id}`)
     }
   }
 }

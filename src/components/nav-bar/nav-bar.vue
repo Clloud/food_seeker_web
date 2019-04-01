@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <!-- 用于占位 -->
+    <div class="holder"></div>
+    <div class="holder-fixed"></div>
     <div class="nav">
       <div class="left-part">
         <span class="iconfont icon-back" @click="back">&#xe612;</span>
@@ -46,11 +49,22 @@ export default {
   justify-content: center
   align-items: center
   background: #fff
+  .holder
+    width: 100%
+    height: 60px
+    background: #fff
+  .holder-fixed
+    width: 100%
+    height: 60px
+    background: #fff
+    position: fixed
   .nav
     display: flex
     align-items: center
     justify-content: space-between
     width: 85%
+    position: fixed
+    background: #fff
     .left-part
       display: flex
       align-items: center

@@ -56,7 +56,7 @@ export default {
         })
           .then((data) => {
             this.$store.commit(types.SET_TOKEN, data.token)
-            this.$router.replace('/my')
+            this.$router.back()
           })
           .catch(() => {
             this.passwordMessages = ['邮箱或密码错误']

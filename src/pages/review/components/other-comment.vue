@@ -45,6 +45,7 @@ export default {
       this.$router.push(`/review/${this.$route.params.id}/comments`)
     },
     addComment () {
+      this.$emit('comment')
     }
   }
 }

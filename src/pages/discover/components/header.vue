@@ -16,5 +16,7 @@ export default {
   line-height: 42px
   font-size: $font-size-title
   font-weight: bold
-  margin-top: 30px
+  padding-top: 30px
+  position: fixed
+  background: #fff
 </style>

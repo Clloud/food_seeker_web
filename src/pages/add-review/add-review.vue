@@ -76,6 +76,11 @@ export default {
     if (!localStorage.token) {
       this.$router.replace('/login')
     }
+  },
+  activated () {
+    if (!localStorage.token) {
+      this.$router.replace('/login')
+    }
   }
 }
 </script>

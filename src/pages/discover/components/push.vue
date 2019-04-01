@@ -40,4 +40,5 @@ export default {
   display: flex
   flex-direction: column
   align-items: center
+  margin: 60px 0 42px
 </style>
