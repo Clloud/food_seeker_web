@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     addReview () {
-      this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, this.restaurant)
+      this.$store.commit(types.SET_ASSOCIATE_RESTAURANT, this.restaurant)
       this.$router.push('/add-review')
     }
   }

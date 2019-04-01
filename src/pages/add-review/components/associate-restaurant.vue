@@ -41,7 +41,7 @@ import * as types from 'store/mutation-types'
 import Search from 'models/search'
 
 export default {
-  name: 'AssosiateRestaurant',
+  name: 'AssociateRestaurant',
   props: {
     open: {
       type: Boolean,
@@ -72,7 +72,7 @@ export default {
       }
     },
     onSelect (index) {
-      this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, this.restaurants[index])
+      this.$store.commit(types.SET_ASSOCIATE_RESTAURANT, this.restaurants[index])
       this.onClose()
     },
     imageUrl (images) {

@@ -16,8 +16,8 @@ const mutations = {
   [types.SET_SEARCH_HISTORY] (state, history) {
     state.searchHistory = history
   },
-  [types.SET_ASSOSIATE_RESTAURANT] (state, restaurant) {
-    state.assosiateRestaurant = restaurant
+  [types.SET_ASSOCIATE_RESTAURANT] (state, restaurant) {
+    state.associateRestaurant = restaurant
   },
   [types.SET_RESTAURANTS] (state, restaurants) {
     state.restaurants = restaurants
