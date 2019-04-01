@@ -8,8 +8,8 @@
     <rating title="口味" ref="taste"></rating>
     <!-- <rating title="舒适度" ref="comfort"></rating> -->
     <review-content ref="content"></review-content>
-    <merchant :restaurant="restaurant" @open="open"></merchant>
-    <assosiate-restaurant :open="activated" @close="close"></assosiate-restaurant>
+    <merchant :restaurant="restaurant" @open="open" title="关联商户"></merchant>
+    <associate-restaurant :open="activated" @close="close"></associate-restaurant>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ import NavBar from 'components/nav-bar/nav-bar'
 import Rating from './components/rating'
 import ReviewContent from './components/review-content'
 import Merchant from './components/merchant'
-import AssosiateRestaurant from './components/assosiate-restaurant'
+import AssociateRestaurant from './components/associate-restaurant'
 import * as types from 'store/mutation-types'
 import Review from 'models/review'
 
@@ -29,7 +29,7 @@ export default {
     Rating,
     ReviewContent,
     Merchant,
-    AssosiateRestaurant
+    AssociateRestaurant
   },
   data () {
     return {
@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     restaurant () {
-      return this.$store.state.assosiateRestaurant
+      return this.$store.state.associateRestaurant
     }
   },
   methods: {
@@ -63,7 +63,7 @@ export default {
           image_amount: 0
         })
           .then((data) => {
-            this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, null)
+            this.$store.commit(types.SET_ASSOCIATE_RESTAURANT, null)
             this.$router.replace('/my/reviews')
           })
           .catch((error) => {

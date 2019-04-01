@@ -11,7 +11,7 @@ export default {
   token: token,
   uid: 0,
   searchHistory: [],
-  assosiateRestaurant: null,
+  associateRestaurant: null,
   restaurants: [],
   reviews: [],
   foods: [],

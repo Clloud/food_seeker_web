@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="title" @click="onSelect">关联商户</div>
+    <div class="title" @click="onSelect">{{ title }}</div>
     <div class="merchant"
       v-if="restaurant">
       <div class="left-part">
@@ -28,11 +28,15 @@ export default {
     restaurant: {
       type: Object,
       default: null
+    },
+    title: {
+      type: String,
+      default: ''
     }
   },
   methods: {
     onDelete () {
-      this.$store.commit(types.SET_ASSOSIATE_RESTAURANT, null)
+      this.$store.commit(types.SET_ASSOCIATE_RESTAURANT, null)
     },
     onSelect () {
       this.$emit('open')
