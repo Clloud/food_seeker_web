@@ -1,21 +1,17 @@
-# food_seeker_web
+## Introduction
 
-> A Vue.js project
+这是`开饭`项目的前端仓库，目前初步实现了登录、注册、点评、搜索、商铺和食品展示等功能。
 
-## Build Setup
+[API文档看这里](https://github.com/Clloud/food_seeker_api)
 
-``` bash
-# install dependencies
-npm install
+## App
 
-# serve with hot reload at localhost:8080
-npm run dev
+[前端效果演示](http://www.foodadvisor.top/) 请使用Chrome手机模式预览
 
-# build for production with minification
-npm run build
+![](assets/1.png)
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+![](assets/2.png)
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+![](assets/3.png)
+
+

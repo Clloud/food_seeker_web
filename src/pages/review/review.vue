@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <nav-bar></nav-bar>
-    <user :user="review.user" :time="review.create_time"></user>
+    <user :user="review.user" :review="review"></user>
     <div class="content">{{ review.content }}</div>
     <restaurant :restaurant="review.restaurant"></restaurant>
     <add-comment :reviewId="review.id"></add-comment>
